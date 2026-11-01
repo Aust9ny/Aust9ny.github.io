@@ -64,7 +64,7 @@ export function ProjectCard({
   return (
     <div
       onClick={() => onOpenDetails(project)}
-      className="bento-card group flex flex-col justify-between p-5 sm:p-6 cursor-pointer hover:-translate-y-1 hover:shadow-[7px_7px_0px_0px_rgba(24,24,27,1)] transition-all bg-white relative"
+      className="bento-card group flex flex-col justify-between p-4 sm:p-6 cursor-pointer hover:-translate-y-1 hover:shadow-[7px_7px_0px_0px_rgba(24,24,27,1)] transition-all bg-white relative shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] sm:shadow-[5px_5px_0px_0px_rgba(24,24,27,1)]"
     >
       {/* Top Bar: Category, Year, Bookmark & Likes */}
       <div>
@@ -88,7 +88,7 @@ export function ProjectCard({
             )}
           </div>
 
-          <div className="flex items-center space-x-1.5">
+          <div className="flex items-center space-x-1.5 flex-shrink-0">
             {/* Live Likes Reaction Button */}
             <button
               onClick={handleLikeClick}
@@ -115,12 +115,12 @@ export function ProjectCard({
         </div>
 
         {/* Title & Tagline */}
-        <div className="space-y-1.5 mb-4">
+        <div className="space-y-1 mb-3 sm:mb-4">
           <div className="flex items-start justify-between">
-            <h3 className="text-xl font-black text-zinc-900 group-hover:text-blue-600 transition-colors leading-snug">
+            <h3 className="text-lg sm:text-xl font-black text-zinc-900 group-hover:text-blue-600 transition-colors leading-snug">
               {project.title}
             </h3>
-            <ArrowUpRight className="w-5 h-5 text-zinc-400 group-hover:text-blue-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 ml-1" />
+            <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 text-zinc-400 group-hover:text-blue-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all flex-shrink-0 ml-1 mt-0.5" />
           </div>
           <p className="text-xs sm:text-sm text-zinc-600 font-medium line-clamp-2">
             {project.tagline}
@@ -128,13 +128,13 @@ export function ProjectCard({
         </div>
 
         {/* Impact Metrics Bento Strip */}
-        <div className="grid grid-cols-3 gap-2 py-3 border-y-2 border-zinc-900 bg-zinc-50 px-2 -mx-2 mb-4">
+        <div className="grid grid-cols-3 gap-1.5 sm:gap-2 py-2 sm:py-3 border-y-2 border-zinc-900 bg-zinc-50 px-1 sm:px-2 -mx-1 sm:-mx-2 mb-3.5 sm:mb-4">
           {project.metrics.map((metric, idx) => (
-            <div key={idx} className="text-center">
-              <div className="text-[11px] sm:text-xs font-black text-zinc-900 truncate">
+            <div key={idx} className="text-center px-0.5">
+              <div className="text-[10px] sm:text-xs font-black text-zinc-900 truncate">
                 {metric.value}
               </div>
-              <div className="text-[9px] font-bold uppercase text-zinc-500 tracking-tight truncate">
+              <div className="text-[8px] sm:text-[9px] font-bold uppercase text-zinc-500 tracking-tight truncate">
                 {metric.label}
               </div>
             </div>
@@ -142,12 +142,12 @@ export function ProjectCard({
         </div>
 
         {/* Tech Stack Tags & Live Views */}
-        <div className="flex items-center justify-between gap-1 mb-5">
-          <div className="flex flex-wrap gap-1.5">
+        <div className="flex items-center justify-between gap-1 mb-4 sm:mb-5">
+          <div className="flex flex-wrap gap-1 sm:gap-1.5">
             {project.techStack.frontend?.slice(0, 2).map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-0.5 text-[11px] font-extrabold bg-blue-50 border border-zinc-900 text-blue-900"
+                className="px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-[11px] font-extrabold bg-blue-50 border border-zinc-900 text-blue-900"
               >
                 {tech}
               </span>
@@ -155,14 +155,14 @@ export function ProjectCard({
             {project.techStack.backend?.slice(0, 1).map((tech) => (
               <span
                 key={tech}
-                className="px-2 py-0.5 text-[11px] font-extrabold bg-emerald-50 border border-zinc-900 text-emerald-900"
+                className="px-1.5 sm:px-2 py-0.5 text-[10px] sm:text-[11px] font-extrabold bg-emerald-50 border border-zinc-900 text-emerald-900"
               >
                 {tech}
               </span>
             ))}
           </div>
 
-          <div className="flex items-center space-x-1 text-[11px] font-extrabold text-zinc-400">
+          <div className="flex items-center space-x-1 text-[10px] sm:text-[11px] font-extrabold text-zinc-400 flex-shrink-0">
             <Eye className="w-3.5 h-3.5" />
             <span>{views}</span>
           </div>
@@ -176,7 +176,7 @@ export function ProjectCard({
       >
         <button
           onClick={() => onOpenDetails(project)}
-          className="bento-btn px-3 py-1.5 bg-zinc-900 hover:bg-blue-600 text-white font-extrabold text-xs uppercase tracking-wider flex-1 text-center"
+          className="bento-btn px-3 py-2 bg-zinc-900 hover:bg-blue-600 text-white font-extrabold text-xs uppercase tracking-wider flex-1 text-center active:translate-x-[1px] active:translate-y-[1px]"
         >
           {t.viewProjectDetails}
         </button>
@@ -186,7 +186,7 @@ export function ProjectCard({
             href={project.liveUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-1.5 bg-white hover:bg-yellow-300 border-2 border-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all"
+            className="p-2 bg-white hover:bg-yellow-300 border-2 border-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all flex items-center justify-center"
             title={t.liveDemo}
           >
             <ExternalLink className="w-4 h-4 text-zinc-900" />
@@ -198,7 +198,7 @@ export function ProjectCard({
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-1.5 bg-white hover:bg-blue-100 border-2 border-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all"
+            className="p-2 bg-white hover:bg-blue-100 border-2 border-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all flex items-center justify-center"
             title={t.sourceCode}
           >
             <Github className="w-4 h-4 text-zinc-900" />

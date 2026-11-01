@@ -83,12 +83,12 @@ export function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drawer Header */}
-        <div className="p-6 bg-zinc-900 text-white flex items-center justify-between border-b-2 border-zinc-900">
+        <div className="p-4 sm:p-6 bg-zinc-900 text-white flex items-center justify-between border-b-2 border-zinc-900 flex-shrink-0">
           <div className="space-y-1">
             <span className="px-2 py-0.5 text-[10px] font-black uppercase tracking-wider bg-yellow-300 text-zinc-900 border border-zinc-900">
               Direct Inquiries
             </span>
-            <h3 className="text-xl font-black">{t.contactDrawerTitle}</h3>
+            <h3 className="text-lg sm:text-xl font-black">{t.contactDrawerTitle}</h3>
           </div>
 
           <button
@@ -100,21 +100,21 @@ export function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
         </div>
 
         {/* Drawer Body */}
-        <div className="p-6 space-y-6 flex-1 overflow-y-auto">
+        <div className="p-4 sm:p-6 space-y-5 sm:space-y-6 flex-1 overflow-y-auto">
           {/* Email Quick-Copy Card */}
-          <div className="bento-card p-4 bg-yellow-50 flex items-center justify-between">
-            <div className="space-y-0.5">
+          <div className="bento-card p-3.5 sm:p-4 bg-yellow-50 flex items-center justify-between gap-2">
+            <div className="space-y-0.5 min-w-0">
               <div className="text-[10px] font-black uppercase text-zinc-500">
                 Direct Email
               </div>
-              <div className="text-sm font-extrabold text-zinc-900 truncate">
+              <div className="text-xs sm:text-sm font-extrabold text-zinc-900 truncate">
                 {profile.email}
               </div>
             </div>
 
             <button
               onClick={handleCopyEmail}
-              className="bento-btn px-3 py-1.5 bg-white hover:bg-yellow-300 text-zinc-900 text-xs font-black uppercase flex items-center space-x-1.5"
+              className="bento-btn flex-shrink-0 px-2.5 sm:px-3 py-1.5 bg-white hover:bg-yellow-300 text-zinc-900 text-[11px] sm:text-xs font-black uppercase flex items-center space-x-1.5"
             >
               {copiedEmail ? (
                 <>
@@ -173,7 +173,7 @@ export function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="e.g. Alex Miller"
-                  className="w-full px-3 py-2 border-2 border-zinc-900 text-xs font-bold bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="w-full px-3 py-2 border-2 border-zinc-900 text-base sm:text-xs font-bold bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                 />
               </div>
 
@@ -187,7 +187,7 @@ export function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   placeholder="alex@company.com"
-                  className="w-full px-3 py-2 border-2 border-zinc-900 text-xs font-bold bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="w-full px-3 py-2 border-2 border-zinc-900 text-base sm:text-xs font-bold bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                 />
               </div>
 
@@ -200,7 +200,7 @@ export function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   placeholder="e.g. Full-Time Role / Contract Opportunity"
-                  className="w-full px-3 py-2 border-2 border-zinc-900 text-xs font-bold bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
+                  className="w-full px-3 py-2 border-2 border-zinc-900 text-base sm:text-xs font-bold bg-white focus:outline-none focus:ring-2 focus:ring-blue-600"
                 />
               </div>
 
@@ -214,7 +214,7 @@ export function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Hello Sippakorn, we are looking for a full-stack engineer..."
-                  className="w-full px-3 py-2 border-2 border-zinc-900 text-xs font-bold bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 resize-none"
+                  className="w-full px-3 py-2 border-2 border-zinc-900 text-base sm:text-xs font-bold bg-white focus:outline-none focus:ring-2 focus:ring-blue-600 resize-none"
                 ></textarea>
               </div>
 

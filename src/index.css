@@ -38,6 +38,15 @@
   box-shadow: 0px 0px 0px 0px #18181b;
 }
 
+/* Hide scrollbar utility for clean mobile horizontal scroll */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* README Markdown Renderer Styles */
 .readme-prose {
   color: #27272a;

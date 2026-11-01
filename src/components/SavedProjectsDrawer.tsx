@@ -30,10 +30,10 @@ export function SavedProjectsDrawer({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="p-5 bg-zinc-900 text-white flex items-center justify-between border-b-2 border-zinc-900">
+        <div className="p-4 sm:p-5 bg-zinc-900 text-white flex items-center justify-between border-b-2 border-zinc-900 flex-shrink-0">
           <div className="flex items-center space-x-2">
             <BookmarkCheck className="w-5 h-5 text-yellow-300" />
-            <h3 className="text-lg font-black">{t.savedDrawerTitle}</h3>
+            <h3 className="text-base sm:text-lg font-black">{t.savedDrawerTitle}</h3>
             <span className="px-2 py-0.5 text-xs font-black bg-yellow-300 text-zinc-900">
               {savedProjects.length}
             </span>
@@ -48,7 +48,7 @@ export function SavedProjectsDrawer({
         </div>
 
         {/* Content List */}
-        <div className="p-5 flex-1 overflow-y-auto space-y-3">
+        <div className="p-4 sm:p-5 flex-1 overflow-y-auto space-y-3">
           {savedProjects.length === 0 ? (
             <div className="py-16 text-center space-y-3">
               <div className="w-12 h-12 rounded-full bg-zinc-100 border-2 border-zinc-900 flex items-center justify-center mx-auto text-zinc-400">

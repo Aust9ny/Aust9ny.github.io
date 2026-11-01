@@ -263,13 +263,13 @@ export default function App() {
         />
 
         {/* PROJECTS SHOWCASE SECTION */}
-        <section id="projects" className="space-y-6 pt-6">
+        <section id="projects" className="space-y-4 sm:space-y-6 pt-4 sm:pt-6">
           {/* Section Header */}
-          <div className="border-2 border-zinc-900 bg-white p-6 shadow-[5px_5px_0px_0px_rgba(24,24,27,1)] flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div className="border-2 border-zinc-900 bg-white p-4 sm:p-6 shadow-[4px_4px_0px_0px_rgba(24,24,27,1)] sm:shadow-[5px_5px_0px_0px_rgba(24,24,27,1)] flex flex-col lg:flex-row lg:items-center justify-between gap-3 sm:gap-4">
             <div>
-              <div className="flex items-center space-x-2 mb-1.5">
+              <div className="flex items-center space-x-2 mb-1">
                 <span className="w-2.5 h-2.5 bg-blue-600"></span>
-                <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-zinc-900">
+                <h2 className="text-xl sm:text-3xl font-black uppercase tracking-tight text-zinc-900">
                   {t.projectsHeading}
                 </h2>
               </div>
@@ -278,11 +278,11 @@ export default function App() {
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center gap-2">
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               {/* Live GitHub status badge */}
-              <div className="flex items-center space-x-1.5 px-3 py-1.5 bg-emerald-50 border-2 border-zinc-900 text-xs font-black uppercase text-emerald-950 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]">
+              <div className="flex items-center space-x-1 px-2.5 py-1 sm:px-3 sm:py-1.5 bg-emerald-50 border-2 border-zinc-900 text-[10px] sm:text-xs font-black uppercase text-emerald-950 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping"></span>
-                <span className="w-2 h-2 rounded-full bg-emerald-600 border border-zinc-900 -ml-2.5"></span>
+                <span className="w-2 h-2 rounded-full bg-emerald-600 border border-zinc-900 -ml-2"></span>
                 <span>GitHub Synced</span>
               </div>
 
@@ -290,29 +290,29 @@ export default function App() {
               <button
                 onClick={() => fetchGitHubProjects(true)}
                 disabled={isSyncingGit}
-                className="px-3 py-1.5 bg-yellow-300 hover:bg-yellow-400 border-2 border-zinc-900 text-xs font-black uppercase text-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] flex items-center space-x-1 transition-all active:translate-x-[1px] active:translate-y-[1px]"
+                className="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-yellow-300 hover:bg-yellow-400 border-2 border-zinc-900 text-[10px] sm:text-xs font-black uppercase text-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] flex items-center space-x-1 transition-all active:translate-x-[1px] active:translate-y-[1px]"
                 title="Refresh projects from GitHub"
               >
-                <RefreshCw className={`w-3.5 h-3.5 ${isSyncingGit ? 'animate-spin' : ''}`} />
+                <RefreshCw className={`w-3 sm:w-3.5 h-3 sm:h-3.5 ${isSyncingGit ? 'animate-spin' : ''}`} />
                 <span>{isSyncingGit ? 'Syncing...' : 'Sync'}</span>
               </button>
 
-              <span className="px-3 py-1.5 bg-blue-50 border-2 border-zinc-900 text-xs font-black uppercase text-blue-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]">
+              <span className="px-2.5 py-1 sm:px-3 sm:py-1.5 bg-blue-50 border-2 border-zinc-900 text-[10px] sm:text-xs font-black uppercase text-blue-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]">
                 {filteredProjects.length} / {allProjects.length} Works
               </span>
             </div>
           </div>
 
           {/* Filter Bar & Search Bento Control */}
-          <div className="bento-card p-4 bg-white flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
-            {/* Category Filter Pills */}
-            <div className="flex items-center space-x-1.5 overflow-x-auto pb-2 md:pb-0">
-              <Filter className="w-4 h-4 text-zinc-500 mr-1 flex-shrink-0" />
+          <div className="bento-card p-3 sm:p-4 bg-white flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+            {/* Category Filter Pills (Horizontal swipe on mobile) */}
+            <div className="flex items-center space-x-1.5 overflow-x-auto no-scrollbar -mx-1 px-1 pb-1 md:pb-0">
+              <Filter className="w-3.5 h-3.5 text-zinc-500 mr-1 flex-shrink-0" />
               {categories.map((cat) => (
                 <button
                   key={cat.key}
                   onClick={() => setSelectedCategory(cat.key)}
-                  className={`px-3 py-1 text-xs font-black uppercase tracking-wide border-2 whitespace-nowrap transition-all ${
+                  className={`px-2.5 sm:px-3 py-1 text-[11px] sm:text-xs font-black uppercase tracking-wide border-2 whitespace-nowrap transition-all flex-shrink-0 active:translate-x-[1px] active:translate-y-[1px] ${
                     selectedCategory === cat.key
                       ? 'bg-zinc-900 text-white border-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]'
                       : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 border-zinc-900'
@@ -324,14 +324,14 @@ export default function App() {
             </div>
 
             {/* Search Input */}
-            <div className="relative md:w-72">
+            <div className="relative w-full md:w-72">
               <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder={t.searchProjectsPlaceholder}
-                className="w-full pl-9 pr-8 py-1.5 text-xs font-bold bg-zinc-50 border-2 border-zinc-900 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-600"
+                className="w-full pl-9 pr-8 py-2 text-base sm:text-xs font-bold bg-zinc-50 border-2 border-zinc-900 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-600 rounded-none shadow-inner"
               />
               {searchQuery && (
                 <button

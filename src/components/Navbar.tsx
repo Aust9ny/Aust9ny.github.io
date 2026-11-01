@@ -46,19 +46,19 @@ export function Navbar({
 
   return (
     <header className="sticky top-0 z-30 bg-[#f8f9fa] border-b-2 border-zinc-900 text-zinc-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo & Status Badge */}
           <div
-            className="flex items-center space-x-3 cursor-pointer group select-none"
+            className="flex items-center space-x-2 sm:space-x-3 cursor-pointer group select-none"
             onClick={() => handleTabClick('projects')}
           >
-            <div className="w-11 h-11 bg-blue-600 border-2 border-zinc-900 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] flex items-center justify-center text-white font-black text-xl group-hover:translate-x-[1px] group-hover:translate-y-[1px] group-hover:shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] transition-all">
-              <Code2 className="w-6 h-6 text-white stroke-[2.5]" />
+            <div className="w-9 h-9 sm:w-11 sm:h-11 bg-blue-600 border-2 border-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] sm:shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] flex items-center justify-center text-white font-black text-lg sm:text-xl group-hover:translate-x-[1px] group-hover:translate-y-[1px] transition-all flex-shrink-0">
+              <Code2 className="w-5 h-5 sm:w-6 sm:h-6 text-white stroke-[2.5]" />
             </div>
             <div>
-              <div className="flex items-center space-x-2">
-                <span className="font-black text-2xl tracking-tight text-zinc-900">
+              <div className="flex items-center space-x-1.5 sm:space-x-2">
+                <span className="font-black text-xl sm:text-2xl tracking-tight text-zinc-900">
                   {t.brandName}<span className="text-blue-600">.{t.brandTag}</span>
                 </span>
                 <span className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 text-[10px] sm:text-[11px] uppercase tracking-wider font-extrabold bg-green-100 border-2 border-zinc-900 text-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]">
@@ -66,7 +66,7 @@ export function Navbar({
                   {t.availableForHire}
                 </span>
               </div>
-              <p className="text-xs text-zinc-500 font-semibold hidden md:block">
+              <p className="text-[11px] text-zinc-500 font-semibold hidden md:block">
                 Full-Stack Developer & Software Engineer
               </p>
             </div>
@@ -183,41 +183,52 @@ export function Navbar({
 
       {/* Mobile Navigation Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t-2 border-zinc-900 bg-white p-4 space-y-2">
-          <button
-            onClick={() => handleTabClick('projects')}
-            className="w-full text-left px-3 py-2 border-2 border-zinc-900 font-black text-sm flex items-center justify-between bg-zinc-50 hover:bg-yellow-100"
-          >
-            <span>{t.navProjects}</span>
-            <FolderGit2 className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => handleTabClick('skills')}
-            className="w-full text-left px-3 py-2 border-2 border-zinc-900 font-black text-sm flex items-center justify-between bg-zinc-50 hover:bg-yellow-100"
-          >
-            <span>{t.navSkills}</span>
-            <Cpu className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => handleTabClick('experience')}
-            className="w-full text-left px-3 py-2 border-2 border-zinc-900 font-black text-sm flex items-center justify-between bg-zinc-50 hover:bg-yellow-100"
-          >
-            <span>{t.navExperience}</span>
-            <History className="w-4 h-4" />
-          </button>
-          <button
-            onClick={() => handleTabClick('about')}
-            className="w-full text-left px-3 py-2 border-2 border-zinc-900 font-black text-sm flex items-center justify-between bg-zinc-50 hover:bg-yellow-100"
-          >
-            <span>{t.navAbout}</span>
-            <User className="w-4 h-4" />
-          </button>
+        <div className="md:hidden border-t-2 border-zinc-900 bg-white p-4 space-y-2.5 shadow-xl animate-in slide-in-from-top-2 duration-150">
+          <div className="grid grid-cols-2 gap-2">
+            <button
+              onClick={() => handleTabClick('projects')}
+              className={`p-3 border-2 border-zinc-900 font-black text-xs uppercase flex items-center justify-between shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] active:translate-x-[1px] active:translate-y-[1px] ${
+                activeTab === 'projects' ? 'bg-blue-600 text-white' : 'bg-zinc-50 text-zinc-900'
+              }`}
+            >
+              <span>{t.navProjects}</span>
+              <FolderGit2 className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => handleTabClick('skills')}
+              className={`p-3 border-2 border-zinc-900 font-black text-xs uppercase flex items-center justify-between shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] active:translate-x-[1px] active:translate-y-[1px] ${
+                activeTab === 'skills' ? 'bg-blue-600 text-white' : 'bg-zinc-50 text-zinc-900'
+              }`}
+            >
+              <span>{t.navSkills}</span>
+              <Cpu className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => handleTabClick('experience')}
+              className={`p-3 border-2 border-zinc-900 font-black text-xs uppercase flex items-center justify-between shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] active:translate-x-[1px] active:translate-y-[1px] ${
+                activeTab === 'experience' ? 'bg-blue-600 text-white' : 'bg-zinc-50 text-zinc-900'
+              }`}
+            >
+              <span>{t.navExperience}</span>
+              <History className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => handleTabClick('about')}
+              className={`p-3 border-2 border-zinc-900 font-black text-xs uppercase flex items-center justify-between shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] active:translate-x-[1px] active:translate-y-[1px] ${
+                activeTab === 'about' ? 'bg-blue-600 text-white' : 'bg-zinc-50 text-zinc-900'
+              }`}
+            >
+              <span>{t.navAbout}</span>
+              <User className="w-4 h-4" />
+            </button>
+          </div>
+
           <button
             onClick={() => {
               setMobileMenuOpen(false);
               setIsContactDrawerOpen(true);
             }}
-            className="w-full text-center px-3 py-2.5 bg-yellow-300 border-2 border-zinc-900 font-black text-sm shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] flex items-center justify-center space-x-2"
+            className="w-full text-center px-4 py-3 bg-yellow-300 hover:bg-yellow-400 border-2 border-zinc-900 font-black text-xs uppercase tracking-wide shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] active:translate-x-[1px] active:translate-y-[1px] flex items-center justify-center space-x-2"
           >
             <Send className="w-4 h-4" />
             <span>{t.navContact}</span>

@@ -26,18 +26,21 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/60 backdrop-blur-xs overflow-y-auto">
+    <div
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6 bg-black/70 backdrop-blur-xs"
+      onClick={onClose}
+    >
       <div
-        className="relative w-full max-w-4xl bg-white border-2 border-zinc-900 shadow-[8px_8px_0px_0px_rgba(24,24,27,1)] my-8 overflow-hidden"
+        className="relative w-full max-w-4xl bg-white border-t-4 sm:border-2 border-zinc-900 shadow-2xl max-h-[92vh] sm:max-h-[88vh] flex flex-col rounded-t-2xl sm:rounded-none overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Bar */}
-        <div className="bg-zinc-900 text-white p-4 sm:p-5 flex items-center justify-between border-b-2 border-zinc-900">
-          <div className="flex items-center space-x-2.5">
-            <span className="px-2.5 py-0.5 text-xs font-black uppercase bg-yellow-300 text-zinc-900 border border-zinc-900">
+        <div className="bg-zinc-900 text-white p-3.5 sm:p-5 flex items-center justify-between border-b-2 border-zinc-900 flex-shrink-0">
+          <div className="flex items-center space-x-2">
+            <span className="px-2 sm:px-2.5 py-0.5 text-[10px] sm:text-xs font-black uppercase bg-yellow-300 text-zinc-900 border border-zinc-900">
               {project.category}
             </span>
-            <span className="text-xs font-bold text-zinc-400">
+            <span className="text-[11px] sm:text-xs font-bold text-zinc-400">
               {project.year} Case Study
             </span>
           </div>
@@ -70,31 +73,31 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
               className="p-1.5 bg-white text-zinc-900 hover:bg-yellow-300 border border-zinc-900 transition-colors"
               title={t.modalClose}
             >
-              <X className="w-5 h-5 stroke-[2.5]" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.5]" />
             </button>
           </div>
         </div>
 
         {/* Modal Title Header */}
-        <div className="p-5 sm:p-6 border-b-2 border-zinc-900 bg-zinc-50">
-          <h2 className="text-2xl sm:text-3xl font-black text-zinc-900 tracking-tight">
+        <div className="p-4 sm:p-6 border-b-2 border-zinc-900 bg-zinc-50 flex-shrink-0">
+          <h2 className="text-xl sm:text-3xl font-black text-zinc-900 tracking-tight leading-tight">
             {project.title}
           </h2>
-          <p className="text-sm sm:text-base text-zinc-700 font-semibold mt-1">
+          <p className="text-xs sm:text-base text-zinc-700 font-semibold mt-1">
             {project.tagline}
           </p>
 
           {/* Impact Metrics Banner */}
-          <div className="grid grid-cols-3 gap-3 mt-4">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-3 sm:mt-4">
             {project.metrics.map((metric, idx) => (
               <div
                 key={idx}
-                className="bg-white border-2 border-zinc-900 p-2.5 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] text-center"
+                className="bg-white border-2 border-zinc-900 p-2 sm:p-2.5 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] text-center"
               >
-                <div className="text-base sm:text-lg font-black text-blue-600">
+                <div className="text-sm sm:text-lg font-black text-blue-600 truncate">
                   {metric.value}
                 </div>
-                <div className="text-[10px] uppercase font-bold text-zinc-600 tracking-wide">
+                <div className="text-[9px] sm:text-[10px] uppercase font-bold text-zinc-600 tracking-tight sm:tracking-wide truncate">
                   {metric.label}
                 </div>
               </div>
@@ -103,7 +106,7 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
         </div>
 
         {/* Modal Navigation Tabs */}
-        <div className="flex border-b-2 border-zinc-900 bg-zinc-200/60 overflow-x-auto">
+        <div className="flex border-b-2 border-zinc-900 bg-zinc-200/60 overflow-x-auto no-scrollbar flex-shrink-0">
           {[
             { id: 'overview', label: t.modalOverview, icon: Layers },
             { id: 'architecture', label: t.modalSolution, icon: Cpu },
@@ -116,7 +119,7 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
-                className={`flex items-center space-x-1.5 px-4 py-2.5 text-xs font-black uppercase tracking-wider border-r-2 border-zinc-900 transition-colors whitespace-nowrap ${
+                className={`flex items-center space-x-1.5 px-3.5 sm:px-4 py-2 sm:py-2.5 text-[11px] sm:text-xs font-black uppercase tracking-wider border-r-2 border-zinc-900 transition-colors whitespace-nowrap ${
                   isActive
                     ? 'bg-white text-blue-600 border-b-2 border-b-white -mb-[2px]'
                     : 'bg-zinc-100 text-zinc-700 hover:bg-white'
@@ -130,28 +133,28 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
         </div>
 
         {/* Modal Tab Contents */}
-        <div className="p-5 sm:p-7 max-h-[50vh] overflow-y-auto space-y-6">
+        <div className="p-4 sm:p-7 flex-1 overflow-y-auto space-y-4 sm:space-y-6">
           {activeTab === 'overview' && (
-            <div className="space-y-5">
-              <div className="space-y-2">
-                <h4 className="text-xs font-black uppercase tracking-wider text-zinc-500">
+            <div className="space-y-4 sm:space-y-5">
+              <div className="space-y-1.5 sm:space-y-2">
+                <h4 className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-zinc-500">
                   Project Summary
                 </h4>
-                <p className="text-sm sm:text-base text-zinc-800 leading-relaxed font-medium">
+                <p className="text-xs sm:text-base text-zinc-800 leading-relaxed font-medium">
                   {project.description}
                 </p>
               </div>
 
               {/* Key Features Checklist */}
-              <div className="space-y-2.5">
-                <h4 className="text-xs font-black uppercase tracking-wider text-zinc-500">
+              <div className="space-y-2">
+                <h4 className="text-[10px] sm:text-xs font-black uppercase tracking-wider text-zinc-500">
                   {t.modalKeyFeatures}
                 </h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                   {project.keyFeatures.map((feature, idx) => (
                     <div
                       key={idx}
-                      className="flex items-start space-x-2 bg-zinc-50 border border-zinc-900 p-2.5 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]"
+                      className="flex items-start space-x-2 bg-zinc-50 border border-zinc-900 p-2 sm:p-2.5 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]"
                     >
                       <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" />
                       <span className="text-xs sm:text-sm font-bold text-zinc-800">
@@ -165,9 +168,9 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
           )}
 
           {activeTab === 'architecture' && (
-            <div className="space-y-5">
+            <div className="space-y-4">
               {/* Challenge Bento */}
-              <div className="bg-red-50 border-2 border-zinc-900 p-4 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] space-y-2">
+              <div className="bg-red-50 border-2 border-zinc-900 p-3.5 sm:p-4 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] sm:shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] space-y-1.5 sm:space-y-2">
                 <div className="flex items-center space-x-2 text-red-700 font-black text-xs uppercase tracking-wide">
                   <AlertCircle className="w-4 h-4" />
                   <span>{t.modalChallenge}</span>
@@ -178,7 +181,7 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
               </div>
 
               {/* Solution Bento */}
-              <div className="bg-emerald-50 border-2 border-zinc-900 p-4 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] space-y-2">
+              <div className="bg-emerald-50 border-2 border-zinc-900 p-3.5 sm:p-4 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] sm:shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] space-y-1.5 sm:space-y-2">
                 <div className="flex items-center space-x-2 text-emerald-700 font-black text-xs uppercase tracking-wide">
                   <ShieldCheck className="w-4 h-4" />
                   <span>{t.modalSolution}</span>
@@ -191,17 +194,17 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
           )}
 
           {activeTab === 'stack' && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
               {project.techStack.frontend && (
-                <div className="bg-white border-2 border-zinc-900 p-3.5 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)]">
-                  <div className="text-xs font-black uppercase text-blue-600 tracking-wider mb-2">
+                <div className="bg-white border-2 border-zinc-900 p-3 sm:p-3.5 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] sm:shadow-[3px_3px_0px_0px_rgba(24,24,27,1)]">
+                  <div className="text-[11px] sm:text-xs font-black uppercase text-blue-600 tracking-wider mb-2">
                     Frontend Layer
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {project.techStack.frontend.map((item) => (
                       <span
                         key={item}
-                        className="px-2 py-0.5 bg-blue-50 border border-zinc-900 text-xs font-bold text-zinc-900"
+                        className="px-2 py-0.5 bg-blue-50 border border-zinc-900 text-[11px] sm:text-xs font-bold text-zinc-900"
                       >
                         {item}
                       </span>
@@ -211,15 +214,15 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
               )}
 
               {project.techStack.backend && (
-                <div className="bg-white border-2 border-zinc-900 p-3.5 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)]">
-                  <div className="text-xs font-black uppercase text-emerald-600 tracking-wider mb-2">
+                <div className="bg-white border-2 border-zinc-900 p-3 sm:p-3.5 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] sm:shadow-[3px_3px_0px_0px_rgba(24,24,27,1)]">
+                  <div className="text-[11px] sm:text-xs font-black uppercase text-emerald-600 tracking-wider mb-2">
                     Backend & Services
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {project.techStack.backend.map((item) => (
                       <span
                         key={item}
-                        className="px-2 py-0.5 bg-emerald-50 border border-zinc-900 text-xs font-bold text-zinc-900"
+                        className="px-2 py-0.5 bg-emerald-50 border border-zinc-900 text-[11px] sm:text-xs font-bold text-zinc-900"
                       >
                         {item}
                       </span>
@@ -229,15 +232,15 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
               )}
 
               {project.techStack.database && (
-                <div className="bg-white border-2 border-zinc-900 p-3.5 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)]">
-                  <div className="text-xs font-black uppercase text-yellow-600 tracking-wider mb-2">
+                <div className="bg-white border-2 border-zinc-900 p-3 sm:p-3.5 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] sm:shadow-[3px_3px_0px_0px_rgba(24,24,27,1)]">
+                  <div className="text-[11px] sm:text-xs font-black uppercase text-yellow-600 tracking-wider mb-2">
                     Data & Storage
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {project.techStack.database.map((item) => (
                       <span
                         key={item}
-                        className="px-2 py-0.5 bg-yellow-50 border border-zinc-900 text-xs font-bold text-zinc-900"
+                        className="px-2 py-0.5 bg-yellow-50 border border-zinc-900 text-[11px] sm:text-xs font-bold text-zinc-900"
                       >
                         {item}
                       </span>
@@ -247,15 +250,15 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
               )}
 
               {project.techStack.devops && (
-                <div className="bg-white border-2 border-zinc-900 p-3.5 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)]">
-                  <div className="text-xs font-black uppercase text-purple-600 tracking-wider mb-2">
+                <div className="bg-white border-2 border-zinc-900 p-3 sm:p-3.5 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] sm:shadow-[3px_3px_0px_0px_rgba(24,24,27,1)]">
+                  <div className="text-[11px] sm:text-xs font-black uppercase text-purple-600 tracking-wider mb-2">
                     DevOps & Cloud
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {project.techStack.devops.map((item) => (
                       <span
                         key={item}
-                        className="px-2 py-0.5 bg-purple-50 border border-zinc-900 text-xs font-bold text-zinc-900"
+                        className="px-2 py-0.5 bg-purple-50 border border-zinc-900 text-[11px] sm:text-xs font-bold text-zinc-900"
                       >
                         {item}
                       </span>
@@ -267,9 +270,9 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
           )}
 
           {activeTab === 'impact' && (
-            <div className="space-y-4">
-              <div className="p-4 bg-yellow-50 border-2 border-zinc-900 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)]">
-                <h4 className="text-xs font-black uppercase text-zinc-900 mb-2">
+            <div className="space-y-3 sm:space-y-4">
+              <div className="p-3.5 sm:p-4 bg-yellow-50 border-2 border-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] sm:shadow-[3px_3px_0px_0px_rgba(24,24,27,1)]">
+                <h4 className="text-[11px] sm:text-xs font-black uppercase text-zinc-900 mb-1 sm:mb-2">
                   Production Telemetry & Business Value
                 </h4>
                 <p className="text-xs sm:text-sm font-semibold text-zinc-700 leading-relaxed">
@@ -277,14 +280,14 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
                 {project.metrics.map((m, idx) => (
                   <div
                     key={idx}
-                    className="p-3 bg-white border-2 border-zinc-900 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] text-center"
+                    className="p-3 bg-white border-2 border-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)] sm:shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] text-center"
                   >
-                    <div className="text-2xl font-black text-blue-600">{m.value}</div>
-                    <div className="text-xs font-bold uppercase text-zinc-600 mt-1">
+                    <div className="text-xl sm:text-2xl font-black text-blue-600">{m.value}</div>
+                    <div className="text-[10px] sm:text-xs font-bold uppercase text-zinc-600 mt-0.5 sm:mt-1">
                       {m.label}
                     </div>
                   </div>
@@ -295,14 +298,14 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
         </div>
 
         {/* Modal Action Footer */}
-        <div className="p-4 sm:p-5 bg-zinc-100 border-t-2 border-zinc-900 flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center space-x-2">
+        <div className="p-3.5 sm:p-5 bg-zinc-100 border-t-2 border-zinc-900 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 flex-shrink-0">
+          <div className="grid grid-cols-2 sm:flex sm:items-center gap-2">
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bento-btn px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-wide flex items-center space-x-1.5"
+                className="bento-btn px-3 py-2 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs uppercase tracking-wide flex items-center justify-center space-x-1.5"
               >
                 <span>{t.modalVisitLive}</span>
                 <ExternalLink className="w-3.5 h-3.5" />
@@ -313,7 +316,7 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bento-btn px-4 py-2 bg-white hover:bg-zinc-100 text-zinc-900 font-black text-xs uppercase tracking-wide flex items-center space-x-1.5"
+                className="bento-btn px-3 py-2 bg-white hover:bg-zinc-100 text-zinc-900 font-black text-xs uppercase tracking-wide flex items-center justify-center space-x-1.5"
               >
                 <span>{t.modalViewSource}</span>
                 <Github className="w-3.5 h-3.5" />
@@ -323,7 +326,7 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
 
           <button
             onClick={onClose}
-            className="bento-btn px-4 py-2 bg-zinc-900 text-white font-black text-xs uppercase tracking-wide"
+            className="bento-btn w-full sm:w-auto px-4 py-2 bg-zinc-900 text-white font-black text-xs uppercase tracking-wide text-center"
           >
             {t.modalClose}
           </button>

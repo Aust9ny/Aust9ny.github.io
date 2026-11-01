@@ -17,12 +17,12 @@ export function AboutSection({ onOpenContact }: AboutSectionProps) {
   const { profile, t } = useLanguage();
 
   return (
-    <section id="about" className="space-y-6 pt-4">
+    <section id="about" className="space-y-5 sm:space-y-6 pt-2 sm:pt-4">
       {/* Section Header */}
-      <div className="border-2 border-zinc-900 bg-white p-6 shadow-[5px_5px_0px_0px_rgba(24,24,27,1)]">
-        <div className="flex items-center space-x-2 mb-1.5">
+      <div className="border-2 border-zinc-900 bg-white p-4 sm:p-6 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] sm:shadow-[5px_5px_0px_0px_rgba(24,24,27,1)]">
+        <div className="flex items-center space-x-2 mb-1">
           <span className="w-2.5 h-2.5 bg-purple-600"></span>
-          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-zinc-900">
+          <h2 className="text-xl sm:text-3xl font-black uppercase tracking-tight text-zinc-900">
             {t.aboutHeading}
           </h2>
         </div>
@@ -31,9 +31,9 @@ export function AboutSection({ onOpenContact }: AboutSectionProps) {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-5">
         {/* Left Column: Personal Narrative (7 Cols) */}
-        <div className="lg:col-span-7 bento-card p-6 sm:p-8 bg-white flex flex-col justify-between">
+        <div className="lg:col-span-7 bento-card p-4 sm:p-8 bg-white flex flex-col justify-between">
           <div className="space-y-4">
             <div className="flex items-center space-x-2 pb-3 border-b-2 border-zinc-900">
               <User className="w-5 h-5 text-blue-600" />

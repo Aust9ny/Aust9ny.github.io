@@ -12,12 +12,12 @@ export function ExperienceTimeline() {
   const { experiences, t } = useLanguage();
 
   return (
-    <section id="experience" className="space-y-6 pt-4">
+    <section id="experience" className="space-y-5 sm:space-y-6 pt-2 sm:pt-4">
       {/* Section Header */}
-      <div className="border-2 border-zinc-900 bg-white p-6 shadow-[5px_5px_0px_0px_rgba(24,24,27,1)]">
-        <div className="flex items-center space-x-2 mb-1.5">
+      <div className="border-2 border-zinc-900 bg-white p-4 sm:p-6 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] sm:shadow-[5px_5px_0px_0px_rgba(24,24,27,1)]">
+        <div className="flex items-center space-x-2 mb-1">
           <span className="w-2.5 h-2.5 bg-yellow-400"></span>
-          <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-zinc-900">
+          <h2 className="text-xl sm:text-3xl font-black uppercase tracking-tight text-zinc-900">
             {t.expHeading}
           </h2>
         </div>
@@ -27,13 +27,13 @@ export function ExperienceTimeline() {
       </div>
 
       {/* Timeline Cards Container */}
-      <div className="space-y-5">
-        {experiences.map((item, idx) => {
+      <div className="space-y-4 sm:space-y-5">
+        {experiences.map((item) => {
           const isEducation = item.type === 'Education';
           return (
             <div
               key={item.id}
-              className="bento-card p-6 bg-white relative overflow-hidden"
+              className="bento-card p-4 sm:p-6 bg-white relative overflow-hidden"
             >
               {/* Top Meta Header */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b-2 border-zinc-900">
