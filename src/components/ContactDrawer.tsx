@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useLanguage } from '../i18n/LanguageContext';
+import { getApiUrl } from '../config/api';
 
 interface ContactDrawerProps {
   isOpen: boolean;
@@ -50,7 +51,7 @@ export function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
     setSubmitError(null);
 
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(getApiUrl('/api/contact'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),

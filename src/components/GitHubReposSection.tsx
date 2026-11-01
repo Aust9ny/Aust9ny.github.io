@@ -12,6 +12,7 @@ import {
   CheckCircle2,
   AlertCircle,
 } from 'lucide-react';
+import { getApiUrl } from '../config/api';
 
 export interface GitHubRepo {
   id: number;
@@ -62,7 +63,7 @@ export function GitHubReposSection({
 
     try {
       // 1. Try our internal cached Express API first
-      let res = await fetch(`/api/github/repos?username=${encodeURIComponent(username)}${force ? '&force=true' : ''}`);
+      let res = await fetch(getApiUrl(`/api/github/repos?username=${encodeURIComponent(username)}${force ? '&force=true' : ''}`));
       
       // 2. If running standalone or API unavailable, fallback directly to GitHub Public API
       if (!res.ok) {

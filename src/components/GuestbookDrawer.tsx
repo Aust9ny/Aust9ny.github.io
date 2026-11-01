@@ -13,6 +13,7 @@ import {
   Building,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { getApiUrl } from '../config/api';
 
 interface GuestbookEntry {
   id: string;
@@ -70,7 +71,7 @@ export function GuestbookDrawer({ isOpen, onClose }: GuestbookDrawerProps) {
   const fetchEntries = async () => {
     try {
       setLoading(true);
-      const res = await fetch('/api/guestbook');
+      const res = await fetch(getApiUrl('/api/guestbook'));
       const data = await res.json();
       if (data.entries) setEntries(data.entries);
     } catch (e) {
@@ -82,7 +83,7 @@ export function GuestbookDrawer({ isOpen, onClose }: GuestbookDrawerProps) {
 
   const fetchHealth = async () => {
     try {
-      const res = await fetch('/api/health');
+      const res = await fetch(getApiUrl('/api/health'));
       const data = await res.json();
       setHealth(data);
     } catch (e) {
@@ -96,7 +97,7 @@ export function GuestbookDrawer({ isOpen, onClose }: GuestbookDrawerProps) {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch('/api/guestbook', {
+      const res = await fetch(getApiUrl('/api/guestbook'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name, role, company, message }),

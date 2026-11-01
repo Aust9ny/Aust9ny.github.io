@@ -13,6 +13,7 @@ import { GuestbookDrawer } from './components/GuestbookDrawer';
 import { GitHubReposSection } from './components/GitHubReposSection';
 import { Footer } from './components/Footer';
 import { useLanguage } from './i18n/LanguageContext';
+import { getApiUrl } from './config/api';
 import { Search, Filter, Sparkles, FolderGit2, X } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
@@ -34,7 +35,7 @@ export default function App() {
   const [projectStats, setProjectStats] = useState<Record<string, { likes: number; views: number }>>({});
 
   useEffect(() => {
-    fetch('/api/projects/stats')
+    fetch(getApiUrl('/api/projects/stats'))
       .then((res) => res.json())
       .then((data) => {
         if (data.stats) setProjectStats(data.stats);
@@ -45,7 +46,7 @@ export default function App() {
   const handleLikeProject = async (id: string) => {
     confetti({ particleCount: 30, spread: 50, origin: { y: 0.8 } });
     try {
-      const res = await fetch(`/api/projects/${id}/like`, { method: 'POST' });
+      const res = await fetch(getApiUrl(`/api/projects/${id}/like`), { method: 'POST' });
       const data = await res.json();
       if (data.stat) {
         setProjectStats((prev) => ({
@@ -60,7 +61,7 @@ export default function App() {
 
   const handleOpenProjectDetails = (project: Project) => {
     setSelectedProject(project);
-    fetch(`/api/projects/${project.id}/view`, { method: 'POST' })
+    fetch(getApiUrl(`/api/projects/${project.id}/view`), { method: 'POST' })
       .then((res) => res.json())
       .then((data) => {
         if (data.stat) {

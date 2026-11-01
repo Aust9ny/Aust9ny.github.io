@@ -11,6 +11,18 @@ const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 
 app.use(express.json());
 
+// --- CORS CONFIGURATION (ALLOW GITHUB PAGES & CUSTOM DOMAINS) ---
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  if (req.method === "OPTIONS") {
+    res.sendStatus(200);
+    return;
+  }
+  next();
+});
+
 // --- DEVOPS HEALTH & METRICS ENDPOINTS ---
 app.get("/api/health", (_req: Request, res: Response) => {
   const dbStatus = db.getStatus();
