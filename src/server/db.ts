@@ -1,6 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import { Pool } from 'pg';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export interface ContactMessage {
   id: string;
