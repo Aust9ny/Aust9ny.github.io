@@ -159,6 +159,42 @@ class PortfolioDatabase {
         );
       `);
 
+      // Auto-migrate existing data from memory / db.json into PostgreSQL
+      const contactsCount = await client.query('SELECT COUNT(*) FROM contacts');
+      if (parseInt(contactsCount.rows[0].count, 10) === 0 && this.memoryState.contacts.length > 0) {
+        console.log(`📦 Auto-migrating ${this.memoryState.contacts.length} existing contacts from db.json into PostgreSQL...`);
+        for (const c of this.memoryState.contacts) {
+          await client.query(
+            `INSERT INTO contacts (id, name, email, subject, message, created_at, status)
+             VALUES ($1, $2, $3, $4, $5, $6, $7) ON CONFLICT (id) DO NOTHING`,
+            [c.id, c.name, c.email, c.subject, c.message, c.created_at, c.status]
+          );
+        }
+      }
+
+      const gbCount = await client.query('SELECT COUNT(*) FROM guestbook');
+      if (parseInt(gbCount.rows[0].count, 10) === 0 && this.memoryState.guestbook.length > 0) {
+        console.log(`📦 Auto-migrating ${this.memoryState.guestbook.length} existing guestbook entries into PostgreSQL...`);
+        for (const g of this.memoryState.guestbook) {
+          await client.query(
+            `INSERT INTO guestbook (id, name, role, company, message, avatar_color, created_at)
+             VALUES ($1, $2, $3, $4, $5, $6, $7) ON CONFLICT (id) DO NOTHING`,
+            [g.id, g.name, g.role, g.company, g.message, g.avatar_color, g.created_at]
+          );
+        }
+      }
+
+      const statsCount = await client.query('SELECT COUNT(*) FROM project_stats');
+      if (parseInt(statsCount.rows[0].count, 10) === 0 && Object.keys(this.memoryState.projectStats).length > 0) {
+        for (const [pid, s] of Object.entries(this.memoryState.projectStats)) {
+          await client.query(
+            `INSERT INTO project_stats (project_id, likes, views, updated_at)
+             VALUES ($1, $2, $3, $4) ON CONFLICT (project_id) DO NOTHING`,
+            [pid, s.likes, s.views, s.updated_at]
+          );
+        }
+      }
+
       client.release();
     } catch (err) {
       console.warn('⚠️ PostgreSQL connection failed, falling back to persistent file store:', (err as Error).message);
