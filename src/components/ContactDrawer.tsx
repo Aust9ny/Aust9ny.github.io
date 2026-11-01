@@ -58,14 +58,22 @@ export function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
     // 1. Try sending email via EmailJS (works serverless directly on GitHub Pages)
     if (serviceId && templateId && publicKey) {
       try {
+        const formattedTime = new Date().toLocaleString('en-US', {
+          dateStyle: 'medium',
+          timeStyle: 'short',
+        });
+
         await emailjs.send(
           serviceId,
           templateId,
           {
+            name: formData.name,
             from_name: formData.name,
+            email: formData.email,
             from_email: formData.email,
-            subject: formData.subject || 'Portfolio Direct Message',
+            subject: formData.subject || 'Portfolio Direct Inquiry',
             message: formData.message,
+            time: formattedTime,
             to_name: profile.name,
             to_email: profile.email,
             reply_to: formData.email,
