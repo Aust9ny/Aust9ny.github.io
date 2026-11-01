@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Project } from '../types';
 import {
   X,
@@ -23,15 +23,40 @@ export function ProjectDetailModal({ project, onClose }: ProjectDetailModalProps
   const { t } = useLanguage();
   const [activeTab, setActiveTab] = useState<'overview' | 'architecture' | 'stack' | 'impact'>('overview');
 
+  // Prevent background scrolling and handle Escape key
+  useEffect(() => {
+    if (project) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          onClose();
+        }
+      };
+
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [project, onClose]);
+
   if (!project) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6 bg-black/70 backdrop-blur-xs"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-6 overflow-hidden">
+      {/* Sibling Backdrop: Only clicks directly on this dark backdrop trigger onClose */}
       <div
-        className="relative w-full max-w-4xl bg-white border-t-4 sm:border-2 border-zinc-900 shadow-2xl max-h-[92vh] sm:max-h-[88vh] flex flex-col rounded-t-2xl sm:rounded-none overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200"
+        className="fixed inset-0 bg-black/70 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+
+      {/* Modal Dialog Box: Sibling to backdrop with z-10 so clicks/scrolls never bubble to backdrop */}
+      <div
+        className="relative z-10 w-full max-w-4xl bg-white border-t-4 sm:border-2 border-zinc-900 shadow-2xl max-h-[92vh] sm:max-h-[88vh] flex flex-col rounded-t-2xl sm:rounded-none overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Top Bar */}

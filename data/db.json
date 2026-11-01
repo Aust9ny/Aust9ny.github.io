@@ -90,6 +90,24 @@
       "likes": 1,
       "views": 1,
       "updated_at": "2026-11-01T13:26:02.701Z"
+    },
+    "hotel-suite": {
+      "project_id": "hotel-suite",
+      "likes": 0,
+      "views": 4,
+      "updated_at": "2026-11-01T14:12:17.636Z"
+    },
+    "moneymind": {
+      "project_id": "moneymind",
+      "likes": 0,
+      "views": 3,
+      "updated_at": "2026-11-01T14:02:42.433Z"
+    },
+    "dealer-web": {
+      "project_id": "dealer-web",
+      "likes": 0,
+      "views": 3,
+      "updated_at": "2026-11-01T14:11:54.704Z"
     }
   }
 }
