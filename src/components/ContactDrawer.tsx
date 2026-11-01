@@ -13,6 +13,7 @@ import {
   Clock,
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import emailjs from '@emailjs/browser';
 import { useLanguage } from '../i18n/LanguageContext';
 import { getApiUrl } from '../config/api';
 
@@ -50,23 +51,44 @@ export function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
     setIsSubmitting(true);
     setSubmitError(null);
 
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // 1. Try sending email via EmailJS (works serverless directly on GitHub Pages)
+    if (serviceId && templateId && publicKey) {
+      try {
+        await emailjs.send(
+          serviceId,
+          templateId,
+          {
+            from_name: formData.name,
+            from_email: formData.email,
+            subject: formData.subject || 'Portfolio Direct Message',
+            message: formData.message,
+            to_name: profile.name,
+            to_email: profile.email,
+            reply_to: formData.email,
+          },
+          publicKey
+        );
+      } catch (err) {
+        console.warn('[EmailJS] Delivery failed, fallback to local cache:', err);
+      }
+    }
+
+    // 2. Try sending to backend server if running
     try {
-      const res = await fetch(getApiUrl('/api/contact'), {
+      await fetch(getApiUrl('/api/contact'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-
-      if (res.ok) {
-        setIsSubmitted(true);
-        confetti({ particleCount: 50, spread: 70, origin: { y: 0.6 } });
-        return;
-      }
     } catch {
-      // Fallback to offline / static host handling
+      // Backend not running / static GitHub Pages host
     }
 
-    // Graceful offline & GitHub Pages fallback
+    // 3. Always preserve in browser local cache as backup
     try {
       const existing = JSON.parse(localStorage.getItem('aust9ny_contact_messages') || '[]');
       existing.unshift({ ...formData, timestamp: new Date().toISOString() });
