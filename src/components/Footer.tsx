@@ -64,7 +64,7 @@ export function Footer() {
                   className="text-zinc-600 hover:text-blue-600 flex items-center space-x-1.5 py-0.5"
                 >
                   <Linkedin className="w-3.5 h-3.5" />
-                  <span>linkedin.com/in/sippakorn</span>
+                  <span>linkedin.com/in/sippakorn-kanhareuk</span>
                 </a>
               </div>
             </div>

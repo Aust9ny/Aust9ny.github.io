@@ -17,7 +17,7 @@ export const portfolioProfile: ProfileInfo = {
   availability: 'Available for Full-time Roles & High-Impact Contracts',
   email: 'sippakorn.kan1@gmail.com',
   github: 'https://github.com/Aust9ny',
-  linkedin: 'https://linkedin.com/in/sippakorn',
+  linkedin: 'https://www.linkedin.com/in/sippakorn-kanhareuk-52059a281/',
   stats: {
     yearsExp: '3+ Years',
     completedProjects: '10+ Projects',

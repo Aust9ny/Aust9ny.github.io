@@ -19,7 +19,7 @@ export const portfolioProfileThai: ProfileInfo = {
     "พร้อมรับงานตำแหน่งประจำ (Full-Time) และงานโปรเจกต์สัญญาจ้าง (Contracts)",
   email: "sippakorn.kan1@gmail.com",
   github: "https://github.com/Aust9ny",
-  linkedin: "https://linkedin.com/in/sippakorn",
+  linkedin: "https://www.linkedin.com/in/sippakorn-kanhareuk-52059a281/",
   stats: {
     yearsExp: "3+ ปี",
     completedProjects: "6 โปรเจกต์",
