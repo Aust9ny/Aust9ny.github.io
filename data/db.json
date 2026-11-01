@@ -1,0 +1,71 @@
+{
+  "contacts": [
+    {
+      "id": "msg_1793000506561_oduqy",
+      "name": "DevOps Recruiter",
+      "email": "recruiter@aws-partner.com",
+      "subject": "DevOps Role",
+      "message": "We loved your portfolio architecture!",
+      "created_at": "2026-10-26T07:41:46.561Z",
+      "status": "unread"
+    }
+  ],
+  "guestbook": [
+    {
+      "id": "seed-1",
+      "name": "Sarah Lin",
+      "role": "Staff Engineer",
+      "company": "CloudScale Inc.",
+      "message": "Impressive architecture on OmniFlow! The event-driven worker queue design is exceptionally clean.",
+      "avatar_color": "blue",
+      "created_at": "2026-10-23T07:41:29.649Z"
+    },
+    {
+      "id": "seed-2",
+      "name": "David Chen",
+      "role": "Head of Engineering",
+      "company": "Apex Systems",
+      "message": "Great full-stack portfolio. Very pragmatic tech stack and attention to database query optimization.",
+      "avatar_color": "yellow",
+      "created_at": "2026-10-19T07:41:29.650Z"
+    }
+  ],
+  "projectStats": {
+    "omniflow": {
+      "project_id": "omniflow",
+      "likes": 43,
+      "views": 320,
+      "updated_at": "2026-10-26T07:46:41.570Z"
+    },
+    "apexmetrics": {
+      "project_id": "apexmetrics",
+      "likes": 38,
+      "views": 245,
+      "updated_at": "2026-10-26T07:41:29.650Z"
+    },
+    "codepulse-ai": {
+      "project_id": "codepulse-ai",
+      "likes": 56,
+      "views": 410,
+      "updated_at": "2026-10-26T07:41:29.650Z"
+    },
+    "nexusmart": {
+      "project_id": "nexusmart",
+      "likes": 24,
+      "views": 180,
+      "updated_at": "2026-10-26T07:41:29.650Z"
+    },
+    "hyperroute": {
+      "project_id": "hyperroute",
+      "likes": 31,
+      "views": 215,
+      "updated_at": "2026-10-26T07:41:29.650Z"
+    },
+    "syncspace": {
+      "project_id": "syncspace",
+      "likes": 29,
+      "views": 195,
+      "updated_at": "2026-10-26T07:41:29.650Z"
+    }
+  }
+}

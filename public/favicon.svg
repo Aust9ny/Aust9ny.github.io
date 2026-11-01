@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Neo-brutalist hard drop shadow -->
+  <rect x="8" y="8" width="50" height="50" rx="4" fill="#18181b" />
+  
+  <!-- Main Blue Card with 3px black border -->
+  <rect x="4" y="4" width="50" height="50" rx="4" fill="#2563eb" stroke="#18181b" stroke-width="3.5" />
+  
+  <!-- Accent Yellow Corner Badge -->
+  <rect x="38" y="2" width="16" height="10" rx="2" fill="#fde047" stroke="#18181b" stroke-width="2" />
+  
+  <!-- Code Brackets & Slash </> in bold white stroke -->
+  <g fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left Angle Bracket < -->
+    <path d="M22 22 L14 29 L22 36" />
+    
+    <!-- Right Angle Bracket > -->
+    <path d="M36 22 L44 29 L36 36" />
+    
+    <!-- Forward Slash / -->
+    <path d="M31 19 L27 39" />
+  </g>
+</svg>

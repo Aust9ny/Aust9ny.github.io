@@ -9,6 +9,8 @@ import { ExperienceTimeline } from './components/ExperienceTimeline';
 import { AboutSection } from './components/AboutSection';
 import { ContactDrawer } from './components/ContactDrawer';
 import { SavedProjectsDrawer } from './components/SavedProjectsDrawer';
+import { GuestbookDrawer } from './components/GuestbookDrawer';
+import { GitHubReposSection } from './components/GitHubReposSection';
 import { Footer } from './components/Footer';
 import { useLanguage } from './i18n/LanguageContext';
 import { Search, Filter, Sparkles, FolderGit2, X } from 'lucide-react';
@@ -20,11 +22,56 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<'projects' | 'skills' | 'experience' | 'about'>('projects');
   const [selectedCategory, setSelectedCategory] = useState<ProjectCategory>('All');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [projectDisplayMode, setProjectDisplayMode] = useState<'featured' | 'github'>('featured');
 
   // Modals & Drawers
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isContactDrawerOpen, setIsContactDrawerOpen] = useState<boolean>(false);
   const [isSavedDrawerOpen, setIsSavedDrawerOpen] = useState<boolean>(false);
+  const [isGuestbookOpen, setIsGuestbookOpen] = useState<boolean>(false);
+
+  // Live Project Stats from API
+  const [projectStats, setProjectStats] = useState<Record<string, { likes: number; views: number }>>({});
+
+  useEffect(() => {
+    fetch('/api/projects/stats')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.stats) setProjectStats(data.stats);
+      })
+      .catch((err) => console.log('Stats sync notice:', err));
+  }, []);
+
+  const handleLikeProject = async (id: string) => {
+    confetti({ particleCount: 30, spread: 50, origin: { y: 0.8 } });
+    try {
+      const res = await fetch(`/api/projects/${id}/like`, { method: 'POST' });
+      const data = await res.json();
+      if (data.stat) {
+        setProjectStats((prev) => ({
+          ...prev,
+          [id]: data.stat,
+        }));
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  const handleOpenProjectDetails = (project: Project) => {
+    setSelectedProject(project);
+    fetch(`/api/projects/${project.id}/view`, { method: 'POST' })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.stat) {
+          setProjectStats((prev) => ({
+            ...prev,
+            [project.id]: data.stat,
+          }));
+        }
+      })
+      .catch(() => {});
+  };
 
   // Saved / Bookmarked Projects in LocalStorage
   const [savedProjects, setSavedProjects] = useState<Project[]>(() => {
@@ -109,6 +156,7 @@ export default function App() {
         savedProjects={savedProjects}
         setIsSavedDrawerOpen={setIsSavedDrawerOpen}
         setIsContactDrawerOpen={setIsContactDrawerOpen}
+        setIsGuestbookOpen={setIsGuestbookOpen}
       />
 
       {/* Main Content Area */}
@@ -137,83 +185,122 @@ export default function App() {
 
             <div className="flex items-center space-x-2">
               <span className="px-3 py-1.5 bg-blue-50 border-2 border-zinc-900 text-xs font-black uppercase text-blue-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]">
-                {filteredProjects.length} / {projects.length} Works
+                {projectDisplayMode === 'featured' ? `${filteredProjects.length} / ${projects.length} Works` : 'Live GitHub Feed'}
               </span>
             </div>
           </div>
 
-          {/* Filter Bar & Search Bento Control */}
-          <div className="bento-card p-4 bg-white flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
-            {/* Category Filter Pills */}
-            <div className="flex items-center space-x-1.5 overflow-x-auto pb-2 md:pb-0">
-              <Filter className="w-4 h-4 text-zinc-500 mr-1 flex-shrink-0" />
-              {categories.map((cat) => (
-                <button
-                  key={cat.key}
-                  onClick={() => setSelectedCategory(cat.key)}
-                  className={`px-3 py-1 text-xs font-black uppercase tracking-wide border-2 whitespace-nowrap transition-all ${
-                    selectedCategory === cat.key
-                      ? 'bg-zinc-900 text-white border-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]'
-                      : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 border-zinc-900'
-                  }`}
-                >
-                  {cat.label}
-                </button>
-              ))}
-            </div>
+          {/* Sub-view switcher: Curated Case Studies vs Live GitHub Repos */}
+          <div className="flex flex-wrap items-center gap-2 border-b-2 border-zinc-900 pb-2">
+            <button
+              onClick={() => setProjectDisplayMode('featured')}
+              className={`px-4 py-2 text-xs font-black uppercase tracking-wide border-2 transition-all flex items-center space-x-2 ${
+                projectDisplayMode === 'featured'
+                  ? 'bg-zinc-900 text-white border-zinc-900 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)]'
+                  : 'bg-white hover:bg-zinc-100 text-zinc-700 border-zinc-900 shadow-[1px_1px_0px_0px_rgba(24,24,27,1)]'
+              }`}
+            >
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Curated Case Studies ({projects.length})</span>
+            </button>
 
-            {/* Search Input */}
-            <div className="relative md:w-72">
-              <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder={t.searchProjectsPlaceholder}
-                className="w-full pl-9 pr-8 py-1.5 text-xs font-bold bg-zinc-50 border-2 border-zinc-900 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-600"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              )}
-            </div>
+            <button
+              onClick={() => setProjectDisplayMode('github')}
+              className={`px-4 py-2 text-xs font-black uppercase tracking-wide border-2 transition-all flex items-center space-x-2 ${
+                projectDisplayMode === 'github'
+                  ? 'bg-emerald-400 text-zinc-900 border-zinc-900 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)]'
+                  : 'bg-white hover:bg-zinc-100 text-zinc-700 border-zinc-900 shadow-[1px_1px_0px_0px_rgba(24,24,27,1)]'
+              }`}
+            >
+              <FolderGit2 className="w-3.5 h-3.5" />
+              <span>Live GitHub Repositories</span>
+              <span className="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
+            </button>
           </div>
 
-          {/* Project Cards Grid */}
-          {filteredProjects.length === 0 ? (
-            <div className="bento-card p-12 bg-white text-center space-y-3">
-              <div className="w-12 h-12 rounded-full bg-zinc-100 border-2 border-zinc-900 flex items-center justify-center mx-auto text-zinc-400">
-                <FolderGit2 className="w-6 h-6" />
-              </div>
-              <p className="text-sm font-black text-zinc-800">
-                {t.noProjectsFound}
-              </p>
-              <button
-                onClick={() => {
-                  setSelectedCategory('All');
-                  setSearchQuery('');
-                }}
-                className="bento-btn px-4 py-2 bg-yellow-300 text-xs font-black uppercase"
-              >
-                Reset Filters
-              </button>
-            </div>
+          {projectDisplayMode === 'github' ? (
+            /* LIVE GITHUB REPOSITORIES SYNC */
+            <GitHubReposSection username="Aust9ny" />
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map((project) => (
-                <ProjectCard
-                  key={project.id}
-                  project={project}
-                  isSaved={savedProjects.some((p) => p.id === project.id)}
-                  onToggleSave={toggleSaveProject}
-                  onOpenDetails={setSelectedProject}
-                />
-              ))}
-            </div>
+            /* CURATED FEATURED PROJECTS */
+            <>
+              {/* Filter Bar & Search Bento Control */}
+              <div className="bento-card p-4 bg-white flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+                {/* Category Filter Pills */}
+                <div className="flex items-center space-x-1.5 overflow-x-auto pb-2 md:pb-0">
+                  <Filter className="w-4 h-4 text-zinc-500 mr-1 flex-shrink-0" />
+                  {categories.map((cat) => (
+                    <button
+                      key={cat.key}
+                      onClick={() => setSelectedCategory(cat.key)}
+                      className={`px-3 py-1 text-xs font-black uppercase tracking-wide border-2 whitespace-nowrap transition-all ${
+                        selectedCategory === cat.key
+                          ? 'bg-zinc-900 text-white border-zinc-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]'
+                          : 'bg-zinc-100 hover:bg-zinc-200 text-zinc-700 border-zinc-900'
+                      }`}
+                    >
+                      {cat.label}
+                    </button>
+                  ))}
+                </div>
+
+                {/* Search Input */}
+                <div className="relative md:w-72">
+                  <Search className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <input
+                    type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    placeholder={t.searchProjectsPlaceholder}
+                    className="w-full pl-9 pr-8 py-1.5 text-xs font-bold bg-zinc-50 border-2 border-zinc-900 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-600"
+                  />
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-700"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  )}
+                </div>
+              </div>
+
+              {/* Project Cards Grid */}
+              {filteredProjects.length === 0 ? (
+                <div className="bento-card p-12 bg-white text-center space-y-3">
+                  <div className="w-12 h-12 rounded-full bg-zinc-100 border-2 border-zinc-900 flex items-center justify-center mx-auto text-zinc-400">
+                    <FolderGit2 className="w-6 h-6" />
+                  </div>
+                  <p className="text-sm font-black text-zinc-800">
+                    {t.noProjectsFound}
+                  </p>
+                  <button
+                    onClick={() => {
+                      setSelectedCategory('All');
+                      setSearchQuery('');
+                    }}
+                    className="bento-btn px-4 py-2 bg-yellow-300 text-xs font-black uppercase"
+                  >
+                    Reset Filters
+                  </button>
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {filteredProjects.map((project) => (
+                    <ProjectCard
+                      key={project.id}
+                      project={project}
+                      isSaved={savedProjects.some((p) => p.id === project.id)}
+                      likes={projectStats[project.id]?.likes}
+                      views={projectStats[project.id]?.views}
+                      onLike={handleLikeProject}
+                      onToggleSave={toggleSaveProject}
+                      onOpenDetails={handleOpenProjectDetails}
+                    />
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </section>
 
@@ -248,6 +335,11 @@ export default function App() {
         onRemoveSaved={removeSavedProject}
         onClearAll={clearAllSaved}
         onSelectProject={(project) => setSelectedProject(project)}
+      />
+
+      <GuestbookDrawer
+        isOpen={isGuestbookOpen}
+        onClose={() => setIsGuestbookOpen(false)}
       />
     </div>
   );

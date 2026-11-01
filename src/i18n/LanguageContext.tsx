@@ -1,19 +1,25 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { Language, TranslationDictionary } from './types';
-import { translations } from './translations';
-import { Project, SkillCategory, ExperienceItem, ProfileInfo } from '../types';
+import {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+import { Language, TranslationDictionary } from "./types";
+import { translations } from "./translations";
+import { Project, SkillCategory, ExperienceItem, ProfileInfo } from "../types";
 import {
   portfolioProfile,
   portfolioProjects,
   portfolioSkills,
   portfolioExperiences,
-} from '../data/portfolioData';
+} from "../data/portfolioData";
 import {
   portfolioProfileThai,
   portfolioProjectsThai,
   portfolioSkillsThai,
   portfolioExperiencesThai,
-} from './portfolioThai';
+} from "./portfolioThai";
 
 interface LanguageContextType {
   language: Language;
@@ -26,44 +32,55 @@ interface LanguageContextType {
   experiences: ExperienceItem[];
 }
 
-const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+const LanguageContext = createContext<LanguageContextType | undefined>(
+  undefined,
+);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
     try {
-      const saved = localStorage.getItem('sippakorn_portfolio_lang');
-      if (saved === 'th' || saved === 'en') return saved;
-      if (typeof navigator !== 'undefined' && navigator.language?.startsWith('th')) {
-        return 'th';
+      const saved = localStorage.getItem("sippakorn_portfolio_lang");
+      if (saved === "th" || saved === "en") return saved;
+      if (
+        typeof navigator !== "undefined" &&
+        navigator.language?.startsWith("th")
+      ) {
+        return "th";
       }
     } catch {
       // ignore
     }
-    return 'en';
+    return "en";
   });
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     try {
-      localStorage.setItem('sippakorn_portfolio_lang', lang);
+      localStorage.setItem("sippakorn_portfolio_lang", lang);
     } catch {
       // ignore
     }
   };
 
   const toggleLanguage = () => {
-    setLanguage(language === 'en' ? 'th' : 'en');
+    setLanguage(language === "en" ? "th" : "en");
   };
 
   useEffect(() => {
     document.documentElement.lang = language;
+    document.title =
+      language === "th"
+        ? "สิปปกร — วิศวกรซอฟต์แวร์ Full-Stack"
+        : "Sippakorn — Full-Stack Developer & Software Engineer";
   }, [language]);
 
   const t = translations[language] || translations.en;
-  const profile = language === 'th' ? portfolioProfileThai : portfolioProfile;
-  const projects = language === 'th' ? portfolioProjectsThai : portfolioProjects;
-  const skills = language === 'th' ? portfolioSkillsThai : portfolioSkills;
-  const experiences = language === 'th' ? portfolioExperiencesThai : portfolioExperiences;
+  const profile = language === "th" ? portfolioProfileThai : portfolioProfile;
+  const projects =
+    language === "th" ? portfolioProjectsThai : portfolioProjects;
+  const skills = language === "th" ? portfolioSkillsThai : portfolioSkills;
+  const experiences =
+    language === "th" ? portfolioExperiencesThai : portfolioExperiences;
 
   return (
     <LanguageContext.Provider
@@ -86,7 +103,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 export function useLanguage() {
   const context = useContext(LanguageContext);
   if (!context) {
-    throw new Error('useLanguage must be used within a LanguageProvider');
+    throw new Error("useLanguage must be used within a LanguageProvider");
   }
   return context;
 }

@@ -11,6 +11,7 @@ import {
   User,
   Menu,
   X,
+  Activity,
 } from 'lucide-react';
 import { useLanguage } from '../i18n/LanguageContext';
 
@@ -20,6 +21,7 @@ interface NavbarProps {
   savedProjects: Project[];
   setIsSavedDrawerOpen: (open: boolean) => void;
   setIsContactDrawerOpen: (open: boolean) => void;
+  setIsGuestbookOpen?: (open: boolean) => void;
 }
 
 export function Navbar({
@@ -28,6 +30,7 @@ export function Navbar({
   savedProjects,
   setIsSavedDrawerOpen,
   setIsContactDrawerOpen,
+  setIsGuestbookOpen,
 }: NavbarProps) {
   const { language, toggleLanguage, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -131,6 +134,18 @@ export function Navbar({
               <Languages className="w-4 h-4 text-zinc-800" />
               <span>{language === 'en' ? '🇹🇭 TH' : '🇬🇧 EN'}</span>
             </button>
+
+            {/* DevOps & Guestbook Telemetry Button */}
+            {setIsGuestbookOpen && (
+              <button
+                onClick={() => setIsGuestbookOpen(true)}
+                className="flex items-center space-x-1.5 px-2.5 py-1.5 bg-white border-2 border-zinc-900 shadow-[3px_3px_0px_0px_rgba(24,24,27,1)] hover:bg-zinc-100 active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all text-xs font-black uppercase"
+                title="Live Server Telemetry & Guestbook"
+              >
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="hidden sm:inline">Telemetry</span>
+              </button>
+            )}
 
             {/* Saved Bookmarks Button */}
             <button

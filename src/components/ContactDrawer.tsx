@@ -33,6 +33,8 @@ export function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
     message: '',
   });
 
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
   if (!isOpen) return null;
 
   const handleCopyEmail = () => {
@@ -42,15 +44,30 @@ export function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
     setTimeout(() => setCopiedEmail(false), 2500);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Failed to send message.');
+      }
+
       setIsSubmitted(true);
       confetti({ particleCount: 50, spread: 70, origin: { y: 0.6 } });
-    }, 600);
+    } catch (err) {
+      setSubmitError((err as Error).message || 'Network error occurred.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleDownloadCv = () => {
@@ -140,6 +157,11 @@ export function ContactDrawer({ isOpen, onClose }: ContactDrawerProps) {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {submitError && (
+                <div className="p-3 bg-red-100 border-2 border-zinc-900 text-xs font-black text-red-900 shadow-[2px_2px_0px_0px_rgba(24,24,27,1)]">
+                  {submitError}
+                </div>
+              )}
               <div className="space-y-1">
                 <label className="text-xs font-black uppercase text-zinc-700">
                   {t.formName} *
