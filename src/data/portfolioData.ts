@@ -15,220 +15,217 @@ export const portfolioProfile: ProfileInfo = {
   ],
   location: 'Bangkok, Thailand (Available Worldwide / Remote)',
   availability: 'Available for Full-time Roles & High-Impact Contracts',
-  email: 'sippakorn.dev@gmail.com',
-  github: 'https://github.com/sippakorn-ka',
+  email: 'sippakorn.kan1@gmail.com',
+  github: 'https://github.com/Aust9ny',
   linkedin: 'https://linkedin.com/in/sippakorn',
   stats: {
-    yearsExp: '4+',
-    completedProjects: '20+',
+    yearsExp: '3+ Years',
+    completedProjects: '10+ Projects',
     satisfactionRate: '99.8%',
-    codeCommits: '1.8K+'
+    codeCommits: '1.2K+'
   }
 };
 
 export const portfolioProjects: Project[] = [
   {
-    id: 'omniflow',
-    title: 'OmniFlow Automation Platform',
-    tagline: 'Enterprise-grade visual workflow orchestrator and distributed task engine',
+    id: 'moneymind',
+    title: 'MoneyMind Financial Management',
+    tagline: 'Personal financial intelligence platform for tracking income, expenses, and investment portfolios',
     category: 'Full-Stack',
     featured: true,
     year: '2025',
-    accentColor: 'blue',
+    accentColor: 'emerald',
     description:
-      'A node-based visual workflow automation suite enabling engineering teams to orchestrate asynchronous microservices, webhooks, and third-party integrations with zero latency bottlenecks.',
+      'A software engineering financial management application designed to give users clear visibility into spending patterns, budget limits, and financial goals with real-time analytics.',
     challenge:
-      'Handling concurrent multi-step webhook executions without memory leaks, while providing an ultra-responsive drag-and-drop builder with real-time live execution telemetry.',
+      'Structuring relational data models for multi-currency transactions, recurring payments, and categorization while maintaining snappy sub-100ms dashboard queries.',
     solution:
-      'Architected an event-driven BullMQ + Redis job processing pipeline with an optimistic UI state engine built in React and Tailwind. Decoupled worker processes from the HTTP ingestion tier.',
+      'Designed optimized PostgreSQL schemas, decoupled transactional ingestion from aggregations, and built an intuitive, responsive frontend with interactive visual charts.',
     keyFeatures: [
-      'Visual drag-and-drop DAG workflow editor with live branch testing',
-      'Distributed worker queue with automatic retry exponential backoff',
-      'Real-time execution log streaming via WebSockets',
-      'Granular role-based access control (RBAC) and audit trails'
+      'Automated transaction categorization and monthly budgeting limits',
+      'Interactive cashflow charts and net worth progression metrics',
+      'Multi-currency balance tracking with automatic exchange rate conversions',
+      'Encrypted data storage and strict user data privacy standards'
     ],
     techStack: {
-      frontend: ['React 19', 'TypeScript', 'Tailwind CSS', 'React Flow', 'Zustand'],
-      backend: ['Node.js', 'Express', 'BullMQ', 'WebSockets'],
-      database: ['PostgreSQL', 'Prisma ORM', 'Redis'],
-      devops: ['Docker', 'AWS ECS', 'GitHub Actions']
+      frontend: ['TypeScript', 'React', 'Tailwind CSS', 'Chart.js'],
+      backend: ['Node.js', 'Express', 'REST API'],
+      database: ['PostgreSQL', 'Prisma ORM'],
+      devops: ['Docker', 'GitHub Actions']
     },
     metrics: [
-      { label: 'Event Ingestion', value: '15,000 req/sec' },
-      { label: 'Latency Cut', value: '-62% vs legacy' },
-      { label: 'Active Runs/Mo', value: '2.4M+' }
+      { label: 'GitHub Stars', value: '⭐ 2 Stars' },
+      { label: 'Primary Stack', value: 'TypeScript & Node' },
+      { label: 'Status', value: 'Production Ready' }
     ],
-    liveUrl: 'https://omniflow-demo.example.com',
-    githubUrl: 'https://github.com/sippakorn-ka/omniflow'
+    githubUrl: 'https://github.com/Aust9ny/MoneyMind'
   },
   {
-    id: 'apexmetrics',
-    title: 'ApexMetrics Revenue Intelligence',
-    tagline: 'Real-time multi-currency SaaS billing analytics and cohort retention tracker',
+    id: 'hotel-suite',
+    title: 'Hotel Management & Reservation Suite',
+    tagline: 'Decoupled hospitality platform with Astro SSR frontend and Python REST backend',
     category: 'Full-Stack',
+    featured: true,
+    year: '2026',
+    accentColor: 'blue',
+    description:
+      'A modern hospitality platform featuring an ultra-fast Astro frontend for guest reservations and a high-performance Python backend for room inventory, pricing rules, and booking confirmation.',
+    challenge:
+      'Preventing race conditions during simultaneous booking attempts for identical room dates while keeping the public booking client lightweight and SEO-friendly.',
+    solution:
+      'Utilized Astro for ultra-fast server-rendered guest catalog pages, paired with transactional booking locks in the Python backend.',
+    keyFeatures: [
+      'Interactive real-time room availability calendar with date pickers',
+      'High-performance static catalog pages with dynamic booking flow',
+      'Comprehensive room tier, amenity, and dynamic pricing management',
+      'Automated booking confirmation and reservation state tracking'
+    ],
+    techStack: {
+      frontend: ['Astro', 'TypeScript', 'Tailwind CSS'],
+      backend: ['Python', 'FastAPI / REST', 'JSON Services'],
+      database: ['PostgreSQL', 'SQLAlchemy'],
+      devops: ['Docker', 'Vite']
+    },
+    metrics: [
+      { label: 'Architecture', value: 'Astro + Python' },
+      { label: 'Frontend Repo', value: 'hotel-front' },
+      { label: 'Backend Repo', value: 'hotel-back' }
+    ],
+    githubUrl: 'https://github.com/Aust9ny/hotel-front',
+    liveUrl: 'https://github.com/Aust9ny/hotel-back'
+  },
+  {
+    id: 'dealer-web',
+    title: 'Dealer Web Portal',
+    tagline: 'Automotive dealership inventory management and customer quotation dashboard',
+    category: 'Frontend',
+    featured: true,
+    year: '2025',
+    accentColor: 'purple',
+    description:
+      'A comprehensive web application tailored for automotive dealerships to manage car inventory, configure vehicle specifications, and generate customer quotations with seamless workflows.',
+    challenge:
+      'Designing complex multi-step vehicle configuration forms with dynamic pricing dependencies and instant validation across varied screen sizes.',
+    solution:
+      'Engineered modular Vue 3 components with reactive state management, client-side caching for vehicle specs, and responsive Neo-brutalist data tables.',
+    keyFeatures: [
+      'Real-time vehicle inventory filtering by make, model, year, and fuel type',
+      'Dynamic quotation calculation with financing and down-payment calculators',
+      'Dealer stock status indicators and reservation management',
+      'Intuitive, mobile-responsive dashboard designed for sales staff'
+    ],
+    techStack: {
+      frontend: ['Vue.js', 'JavaScript', 'Tailwind CSS', 'Pinia'],
+      backend: ['REST API', 'JSON Services'],
+      database: ['PostgreSQL / MySQL'],
+      devops: ['Vite', 'GitHub Actions']
+    },
+    metrics: [
+      { label: 'Framework', value: 'Vue.js' },
+      { label: 'Design', value: 'Mobile-first Bento' },
+      { label: 'Interface', value: 'Inventory Dashboard' }
+    ],
+    githubUrl: 'https://github.com/Aust9ny/dealer-web'
+  },
+  {
+    id: 'ai-usage-bar',
+    title: 'AI Usage Bar (macOS Native App)',
+    tagline: 'Native lightweight macOS menu bar utility for monitoring LLM token consumption and API limits',
+    category: 'AI & Tools',
     featured: true,
     year: '2025',
     accentColor: 'yellow',
     description:
-      'Financial telemetry dashboard aggregating Stripe, Paddle, and crypto payments into unified MRR/ARR charts, churn probability forecasts, and cohort retention matrices.',
+      'A native Swift macOS application residing in the menu bar that monitors real-time AI token usage, API quotas, and billing telemetry across major LLM providers.',
     challenge:
-      'Aggregating millions of webhook financial transaction rows across fluctuating currencies in sub-second query speeds for interactive dashboard charting.',
+      'Achieving zero background CPU drain while polling multiple AI developer API endpoints and displaying clear, glanceable HUD notifications.',
     solution:
-      'Implemented TimescaleDB hypertable partitioning alongside Redis caching layers and specialized SQL window aggregation queries, keeping dashboard page loads under 300ms.',
+      'Developed in Swift using AppKit/SwiftUI with lightweight asynchronous background URLSessions, low-frequency smart polling, and native macOS aesthetics.',
     keyFeatures: [
-      'Interactive cohort retention heatmap with drill-down filters',
-      'Predictive customer churn analysis powered by statistical regression',
-      'One-click multi-currency tax and VAT summary generation',
-      'Granular webhook replay debugger with idempotency tracking'
+      'Glanceable real-time token count and billing quota status in menu bar',
+      'Customizable usage thresholds with native macOS notification alerts',
+      'Provider support across OpenAI, Anthropic, and Google Gemini API keys',
+      'Ultra-low memory footprint (<25MB) and open-source MIT license'
     ],
     techStack: {
-      frontend: ['Next.js 15', 'TypeScript', 'Recharts', 'Tailwind CSS'],
-      backend: ['Node.js', 'Fastify', 'TypeScript'],
-      database: ['PostgreSQL', 'TimescaleDB', 'Redis'],
-      devops: ['Vercel', 'Supabase', 'Docker']
+      frontend: ['Swift', 'SwiftUI', 'AppKit'],
+      backend: ['Native macOS Services', 'Async/Await'],
+      database: ['Keychain Services', 'UserDefaults'],
+      devops: ['Xcode', 'GitHub Open Source']
     },
     metrics: [
-      { label: 'Dashboard Speed', value: '280ms P95' },
-      { label: 'Tracked Revenue', value: '$8.2M ARR' },
-      { label: 'Data Accuracy', value: '99.99%' }
+      { label: 'Platform', value: 'macOS Native' },
+      { label: 'Language', value: 'Swift' },
+      { label: 'License', value: 'MIT Open Source' }
     ],
-    liveUrl: 'https://apexmetrics.example.com',
-    githubUrl: 'https://github.com/sippakorn-ka/apex-metrics'
+    githubUrl: 'https://github.com/Aust9ny/ai-usage-bar'
   },
   {
-    id: 'codepulse-ai',
-    title: 'CodePulse AI Review Assistant',
-    tagline: 'Automated pull-request security scanner and architectural refactoring advisor',
-    category: 'AI & Tools',
-    featured: true,
-    year: '2024',
-    accentColor: 'purple',
-    description:
-      'A developer productivity bot integrating with GitHub webhooks to review PR diffs, flag potential SQL injections/memory leaks, and draft clean refactoring suggestions before human review.',
-    challenge:
-      'Synthesizing large multi-file Git diffs into contextual LLM prompts without exceeding token budgets or generating superficial boilerplate suggestions.',
-    solution:
-      'Engineered an AST-aware token chunking parser that isolates modified syntax branches, evaluates related symbols, and queries Gemini 2.5 Flash with deterministic structured schemas.',
-    keyFeatures: [
-      'Automated PR inline commenting with copy-pasteable diff proposals',
-      'Dependency vulnerability checks against known CVE databases',
-      'Custom company code standard enforcement via natural language rules',
-      'Summary digest generation for team engineering standups'
-    ],
-    techStack: {
-      frontend: ['React', 'TypeScript', 'Lucide React', 'Vite'],
-      backend: ['Node.js', 'Express', 'Octokit (GitHub API)', 'Google Gemini AI SDK'],
-      database: ['PostgreSQL', 'Redis'],
-      devops: ['Cloudflare Workers', 'Docker']
-    },
-    metrics: [
-      { label: 'Review Time Saved', value: '3.5 hrs/dev/wk' },
-      { label: 'Security Catches', value: '140+ Vulns' },
-      { label: 'Dev Satisfaction', value: '94% Approval' }
-    ],
-    liveUrl: 'https://codepulse.example.com',
-    githubUrl: 'https://github.com/sippakorn-ka/codepulse-ai'
-  },
-  {
-    id: 'nexusmart',
-    title: 'NexusMart B2B Wholesale Engine',
-    tagline: 'High-throughput wholesale order management and multi-warehouse sync system',
+    id: 'raid-activist',
+    title: 'Raid Activist Multi-Platform Suite',
+    tagline: 'Coordinated tactical group events, raid scheduling, and community engagement platform',
     category: 'Full-Stack',
-    featured: false,
-    year: '2024',
-    accentColor: 'emerald',
-    description:
-      'End-to-end B2B commerce platform with tiered volume pricing, customized quotation approvals, multi-location inventory deduction, and automated invoice PDF generation.',
-    challenge:
-      'Preventing inventory overselling during simultaneous bulk orders while keeping product listing search instantaneously snappy across 40,000+ SKUs.',
-    solution:
-      'Implemented ACID transactional row-level locks in PostgreSQL during order checkout, paired with Elasticsearch for millisecond fuzzy catalog filtering.',
-    keyFeatures: [
-      'Custom customer tier pricing matrix with instant bulk discount logic',
-      'Multi-warehouse inventory reservation and barcode scanning integration',
-      'Automated branded PDF invoice generation and tax compliance calculations',
-      'Wholesale credit line limits with automatic risk warnings'
-    ],
-    techStack: {
-      frontend: ['React', 'TypeScript', 'Tailwind CSS', 'TanStack Table'],
-      backend: ['Node.js', 'Express', 'Elasticsearch'],
-      database: ['PostgreSQL', 'Prisma ORM'],
-      devops: ['AWS EC2', 'S3', 'Nginx']
-    },
-    metrics: [
-      { label: 'SKUs Indexed', value: '45,000+' },
-      { label: 'Checkout Concurrency', value: '800 orders/min' },
-      { label: 'Oversell Rate', value: '0.00%' }
-    ],
-    liveUrl: 'https://nexusmart.example.com',
-    githubUrl: 'https://github.com/sippakorn-ka/nexus-mart'
-  },
-  {
-    id: 'hyperroute',
-    title: 'HyperRoute Edge API Gateway',
-    tagline: 'Ultra-lightweight distributed API proxy, rate limiter, and authentication proxy',
-    category: 'Backend & Cloud',
-    featured: false,
-    year: '2024',
+    featured: true,
+    year: '2025',
     accentColor: 'rose',
     description:
-      'Configurable edge routing proxy delivering token-bucket rate limiting, JWT verification, and dynamic upstream load balancing with sub-2 millisecond overhead.',
+      'An ecosystem connecting a Vue.js web client, a TypeScript cross-platform mobile application, and a Node.js backend to organize community events, raid schedules, and role management.',
     challenge:
-      'Minimizing proxy roundtrip overhead while performing synchronous cryptographic JWT validation and atomic Redis sliding-window quota checks.',
+      'Synchronizing live event RSVPs and role assignments across concurrent web and mobile users with minimal latency.',
     solution:
-      'Built a lean Go & Node.js dual proxy architecture leveraging Redis pipelined Lua scripts for atomic sliding window rate limiting.',
+      'Architected a decoupled micro-architecture with a Node.js REST API serving both the Vue web portal and the mobile app with consistent data contracts.',
     keyFeatures: [
-      'Sliding window rate-limiter with IP and API key tier quotas',
-      'Centralized JWT auth validation and upstream header forwarding',
-      'Health check circuit breaker with automated dead host failover',
-      'Structured request logging with OpenTelemetry tracing'
+      'Unified user profiles and authentication across Web and Mobile apps',
+      'Interactive event scheduling with role assignments and attendance rosters',
+      'Cross-platform responsive design optimized for quick mobile check-ins',
+      'Role-based community administration and raid leaderboard tracking'
     ],
     techStack: {
-      backend: ['Node.js', 'TypeScript', 'Go', 'Express'],
-      database: ['Redis cluster'],
-      devops: ['Docker', 'Kubernetes', 'Linux', 'Terraform']
+      frontend: ['Vue.js', 'TypeScript', 'Mobile App'],
+      backend: ['Node.js', 'Express', 'JavaScript'],
+      database: ['PostgreSQL / MongoDB'],
+      devops: ['Docker', 'GitHub Actions']
     },
     metrics: [
-      { label: 'Proxy Overhead', value: '< 1.8ms' },
-      { label: 'Peak Capacity', value: '40,000 RPS' },
-      { label: 'Uptime Score', value: '99.99%' }
+      { label: 'Platforms', value: 'Web + Mobile + API' },
+      { label: 'Frontend', value: 'Vue & TypeScript' },
+      { label: 'Backend', value: 'Node.js Express' }
     ],
-    liveUrl: 'https://hyperroute.example.com',
-    githubUrl: 'https://github.com/sippakorn-ka/hyperroute'
+    githubUrl: 'https://github.com/Aust9ny/Raid_Activist'
   },
   {
-    id: 'syncspace',
-    title: 'SyncSpace Collaborative Canvas',
-    tagline: 'Real-time collaborative diagramming and whiteboard tool with conflict resolution',
+    id: 'aust9ny-portfolio',
+    title: 'Aust9ny Engineering Portfolio',
+    tagline: 'High-performance bilingual software engineer portfolio with live GitHub API integration',
     category: 'Frontend',
     featured: false,
-    year: '2023',
+    year: '2026',
     accentColor: 'blue',
     description:
-      'A low-latency browser canvas where remote engineering teams sketch system architectures, flowcharts, and sticky-notes with live multi-cursor presence.',
+      'The very portfolio you are browsing: a Neo-brutalist interactive portfolio built with React 19, TypeScript, and Vite, featuring automated GitHub Pages CI/CD and dynamic repository telemetry.',
     challenge:
-      'Ensuring conflict-free document convergence during simultaneous edits across unstable mobile and desktop network connections.',
+      'Building a zero-cold-start interactive developer showcase with bilingual Thai/English localization, live GitHub API synchronization, and clean design.',
     solution:
-      'Employed Yjs Conflict-free Replicated Data Types (CRDTs) over WebSockets with HTML5 Canvas hardware-accelerated rendering.',
+      'Decoupled static Vite assets hosted on GitHub Pages CDN with relative path resolution, paired with GitHub Public REST API integration.',
     keyFeatures: [
-      'Real-time smooth multiplayer cursor tracking and selection boxes',
-      'Infinite zoomable and pannable 60FPS canvas renderer',
-      'Export to SVG, PNG, and clean Markdown architecture briefs',
-      'Local-first offline editing with instant cloud re-synchronization'
+      'Live GitHub API sync: auto-discovers and showcases public repositories',
+      'Bilingual support with instant English/Thai localization context switching',
+      'Neo-brutalist Bento UI with responsive animations and interactive drawers',
+      'Zero-maintenance automated CI/CD pipeline via GitHub Actions'
     ],
     techStack: {
-      frontend: ['React', 'TypeScript', 'HTML5 Canvas API', 'Yjs CRDT'],
-      backend: ['Node.js', 'WebSockets / Socket.io'],
-      database: ['IndexedDB', 'PostgreSQL'],
-      devops: ['Vercel', 'Render']
+      frontend: ['React 19', 'TypeScript', 'Tailwind CSS', 'Motion'],
+      backend: ['Node.js', 'Express', 'CORS Middleware'],
+      database: ['PostgreSQL / Persistent JSON Engine'],
+      devops: ['GitHub Actions', 'GitHub Pages', 'Docker']
     },
     metrics: [
-      { label: 'Sync Latency', value: '< 45ms' },
-      { label: 'Canvas Render', value: 'Solid 60 FPS' },
-      { label: 'Session Length', value: '42m avg' }
+      { label: 'Performance', value: '100% Edge CDN' },
+      { label: 'Build Time', value: '<1s Vite Build' },
+      { label: 'Auto Deploy', value: 'GitHub Actions' }
     ],
-    liveUrl: 'https://syncspace.example.com',
-    githubUrl: 'https://github.com/sippakorn-ka/syncspace'
+    githubUrl: 'https://github.com/Aust9ny/Aust9ny.github.io',
+    liveUrl: 'https://aust9ny.github.io/'
   }
 ];
 
