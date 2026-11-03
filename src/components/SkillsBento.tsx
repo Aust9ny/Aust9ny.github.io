@@ -42,21 +42,6 @@ export function SkillsBento() {
     }
   };
 
-  const getProgressColor = (idx: number) => {
-    switch (idx) {
-      case 0:
-        return 'bg-blue-600';
-      case 1:
-        return 'bg-emerald-600';
-      case 2:
-        return 'bg-amber-500';
-      case 3:
-        return 'bg-purple-600';
-      default:
-        return 'bg-zinc-900';
-    }
-  };
-
   return (
     <section id="skills" className="space-y-5 sm:space-y-6 pt-2 sm:pt-4">
       {/* Section Header */}
@@ -104,25 +89,18 @@ export function SkillsBento() {
               </div>
 
               {/* Skill Items List */}
-              <div className="space-y-3.5">
+              <div className="space-y-2">
                 {category.skills.map((skill, sIdx) => (
-                  <div key={sIdx} className="space-y-1">
-                    <div className="flex items-center justify-between text-xs">
-                      <span className="font-extrabold text-zinc-900">
-                        {skill.name}
-                      </span>
-                      <span className="px-1.5 py-0.5 text-[10px] font-black uppercase tracking-wider bg-zinc-100 border border-zinc-900 text-zinc-800">
-                        {skill.level}
-                      </span>
-                    </div>
-
-                    {/* Neo-brutalist Progress Bar */}
-                    <div className="w-full h-2.5 bg-zinc-100 border border-zinc-900 overflow-hidden">
-                      <div
-                        className={`h-full ${getProgressColor(catIdx)} transition-all duration-500`}
-                        style={{ width: `${skill.percent}%` }}
-                      ></div>
-                    </div>
+                  <div
+                    key={sIdx}
+                    className="flex items-center justify-between text-xs py-1.5 px-2.5 bg-zinc-50 border border-zinc-200 hover:border-zinc-900 transition-colors"
+                  >
+                    <span className="font-extrabold text-zinc-900">
+                      {skill.name}
+                    </span>
+                    <span className="px-1.5 py-0.5 text-[10px] font-black uppercase tracking-wider bg-white border border-zinc-900 text-zinc-800">
+                      {skill.level}
+                    </span>
                   </div>
                 ))}
               </div>

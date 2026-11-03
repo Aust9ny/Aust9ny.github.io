@@ -188,10 +188,10 @@ export const portfolioProjectsThai: Project[] = [
       "ระบบจัดการสิทธิ์ผู้ดูแลคอมมูนิตี้และตารางคะแนนกิจกรรม",
     ],
     techStack: {
-      frontend: ["Vue.js", "TypeScript", "Mobile App"],
-      backend: ["Node.js", "Express", "JavaScript"],
-      database: ["PostgreSQL / MongoDB"],
-      devops: ["Docker", "GitHub Actions"],
+      frontend: ["Nuxt.js", "Vue.js", "TypeScript", "Tailwind CSS"],
+      backend: ["Node.js", "NestJS / Express", "REST APIs"],
+      database: ["MySQL", "PostgreSQL / Prisma ORM"],
+      devops: ["Docker", "GitHub Actions", "AWS"],
     },
     metrics: [
       { label: "แพลตฟอร์ม", value: "Web + Mobile + API" },
@@ -244,138 +244,123 @@ export const portfolioSkillsThai: SkillCategory[] = [
       "การพัฒนาหน้าบ้านที่ทันสมัย โหลดเร็วระดับมิลลิวินาที และตอบสนองทุกขนาดหน้าจอ",
     color: "blue",
     skills: [
-      { name: "React 18 & 19", level: "ผู้เชี่ยวชาญ (Expert)", percent: 95 },
-      { name: "TypeScript", level: "ผู้เชี่ยวชาญ (Expert)", percent: 92 },
+      { name: "React 18 & 19", level: "ผู้เชี่ยวชาญ (Expert)" },
       {
         name: "Next.js (App Router)",
         level: "ขั้นสูง (Advanced)",
-        percent: 90,
       },
+      {
+        name: "Nuxt.js & Vue.js",
+        level: "ขั้นสูง (Advanced)",
+      },
+      { name: "TypeScript & JavaScript (ES6+)", level: "ผู้เชี่ยวชาญ (Expert)" },
       {
         name: "Tailwind CSS & การจัดสไตล์",
         level: "ผู้เชี่ยวชาญ (Expert)",
-        percent: 95,
       },
       {
-        name: "State Management (Zustand/Redux)",
-        level: "ขั้นสูง (Advanced)",
-        percent: 90,
-      },
-      {
-        name: "เครื่องมือ Vite & Webpack",
-        level: "ขั้นสูง (Advanced)",
-        percent: 88,
+        name: "Bootstrap & HTML5/CSS3",
+        level: "ผู้เชี่ยวชาญ (Expert)",
       },
     ],
   },
   {
-    title: "Backend & Distributed Systems",
+    title: "Backend & APIs",
     description:
-      "การออกแบบระบบ API, Microservices และระบบประมวลผลคิวที่มีความเสถียรสูง",
+      "การออกแบบระบบ API, สถาปัตยกรรม MVC และ Microservices ที่มีความเสถียรสูง",
     color: "emerald",
     skills: [
       {
         name: "Node.js & Runtime Internals",
         level: "ผู้เชี่ยวชาญ (Expert)",
-        percent: 94,
       },
       {
-        name: "Express & Fastify",
-        level: "ผู้เชี่ยวชาญ (Expert)",
-        percent: 92,
+        name: "NestJS & Express",
+        level: "ขั้นสูง (Advanced)",
+      },
+      {
+        name: "Laravel & CodeIgniter (CI2)",
+        level: "ขั้นสูง (Advanced)",
       },
       {
         name: "การออกแบบ REST & GraphQL API",
         level: "ผู้เชี่ยวชาญ (Expert)",
-        percent: 93,
-      },
-      {
-        name: "Microservices & คิวประมวลผล (Queues)",
-        level: "ขั้นสูง (Advanced)",
-        percent: 87,
-      },
-      {
-        name: "WebSocket & ระบบ Real-time",
-        level: "ขั้นสูง (Advanced)",
-        percent: 89,
       },
       {
         name: "ระบบความปลอดภัย & JWT / OAuth",
         level: "ขั้นสูง (Advanced)",
-        percent: 90,
+      },
+      {
+        name: "WebSocket & ระบบ Real-time",
+        level: "ขั้นสูง (Advanced)",
       },
     ],
   },
   {
-    title: "Databases & Storage",
+    title: "Databases & ORM",
     description:
-      "การออกแบบฐานข้อมูลแบบ Relational, ทรานแซกชัน ACID และระบบ Caching ความเร็วสูง",
+      "การออกแบบฐานข้อมูลแบบ Relational, ทรานแซกชัน ACID และระบบจัดการ ORM",
     color: "yellow",
     skills: [
-      { name: "MYSQL", level: "ผู้เชี่ยวชาญ (Expert)", percent: 92 },
+      { name: "MySQL", level: "ผู้เชี่ยวชาญ (Expert)" },
+      {
+        name: "PostgreSQL & SQL Optimization",
+        level: "ผู้เชี่ยวชาญ (Expert)",
+      },
       {
         name: "Prisma ORM & Drizzle",
         level: "ผู้เชี่ยวชาญ (Expert)",
-        percent: 91,
+      },
+      {
+        name: "Redis (Caching & Queues)",
+        level: "ขั้นสูง (Advanced)",
       },
       {
         name: "MongoDB & NoSQL Data Modeling",
         level: "ขั้นสูง (Advanced)",
-        percent: 85,
       },
       {
         name: "Database Migrations & Indexing",
         level: "ขั้นสูง (Advanced)",
-        percent: 89,
-      },
-      {
-        name: "Supabase & Firebase BaaS",
-        level: "ขั้นสูง (Advanced)",
-        percent: 88,
       },
     ],
   },
   {
-    title: "DevOps, Cloud & Architecture",
+    title: "Cloud, DevOps & Tooling",
     description:
-      "ระบบส่งมอบอัตโนมัติ CI/CD, การรันคอนเทนเนอร์ และสถาปัตยกรรมระดับ Production",
+      "ระบบ Cloud Infrastructure, คอนเทนเนอร์, CI/CD และระบบควบคุมเวอร์ชัน",
     color: "purple",
     skills: [
       {
         name: "Docker & Containerization",
         level: "ขั้นสูง (Advanced)",
-        percent: 90,
+      },
+      {
+        name: "AWS Services (EC2, S3, RDS, CloudFront)",
+        level: "ชำนาญการ (Proficient)",
+      },
+      {
+        name: "Google Cloud & Huawei Cloud",
+        level: "ชำนาญการ (Proficient)",
       },
       {
         name: "Git & GitHub Actions CI/CD",
         level: "ผู้เชี่ยวชาญ (Expert)",
-        percent: 92,
-      },
-      {
-        name: "บริการ AWS (S3, ECS, EC2)",
-        level: "ชำนาญการ (Proficient)",
-        percent: 82,
       },
       {
         name: "การดูแลเซิร์ฟเวอร์ Linux",
         level: "ขั้นสูง (Advanced)",
-        percent: 86,
-      },
-      {
-        name: "Clean Architecture & Testing (Jest/Vitest)",
-        level: "ขั้นสูง (Advanced)",
-        percent: 89,
       },
       {
         name: "Vercel, Railway & Cloudflare",
         level: "ผู้เชี่ยวชาญ (Expert)",
-        percent: 92,
       },
     ],
   },
 ];
 
 export const portfolioExperiencesThai: ExperienceItem[] = [
+  /*
   {
     id: "exp-1",
     role: "Senior Full-Stack Developer",
@@ -425,26 +410,41 @@ export const portfolioExperiencesThai: ExperienceItem[] = [
       "Jest",
     ],
   },
+  */
   {
     id: "exp-3",
-    role: "Frontend & UI Developer",
-    company: "InnoTech Creative Labs",
-    location: "กรุงเทพฯ, ประเทศไทย",
-    period: "2020 - 2021",
+    role: "Full-Stack Developer / Software Engineer",
+    company: "Advice IT Infinite Public Company Limited (บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน))",
+    location: "กรุงเทพฯ / นนทบุรี, ประเทศไทย",
+    period: "2024 - ปัจจุบัน",
     type: "Full-Time",
+    current: true,
     description:
-      "พัฒนาหน้าเว็บไซต์ตอบสนองแบบ Interactive, หน้าร้านค้าออนไลน์ E-commerce และระบบ Design System ให้กับแบรนด์ชั้นนำระดับสากล",
+      "พัฒนาและดูแลระบบเว็บแอปพลิเคชันระดับองค์กร แพลตฟอร์ม E-commerce ระบบงานภายใน และ REST APIs ที่รองรับธุรกรรมจำนวนมาก ครอบคลุมทั้งส่วน Frontend และ Backend",
     achievements: [
-      "พัฒนาหน้าเว็บที่ตรงตามสเปกดีไซน์กว่า 15 โปรเจกต์ โดยได้คะแนน Google Lighthouse สูงกว่า 95/100 อย่างสม่ำเสมอ",
-      "ทำงานร่วมกับทีม UI/UX เพื่อแปลง Design System จาก Figma สู่ React Components ที่นำกลับมาใช้ซ้ำได้ง่าย",
+      "พัฒนาและปรับปรุงเว็บแอปพลิเคชันด้วยเทคโนโลยีสมัยใหม่ทั้ง React, Next.js, Nuxt.js, Laravel, CodeIgniter (CI2) และ NestJS",
+      "ออกแบบและเพิ่มประสิทธิภาพฐานข้อมูลเชิงสัมพันธ์ด้วย MySQL, PostgreSQL และ Prisma ORM เพื่อการประมวลผลข้อมูลที่เสถียรและแม่นยำ",
+      "จัดการ Container ด้วย Docker และ Deploy ระบบขึ้น Cloud Services ชั้นนำทั้ง AWS, Google Cloud และ Huawei Cloud",
     ],
     skills: [
-      "React",
+      "TypeScript",
       "JavaScript (ES6+)",
       "HTML5/CSS3",
+      "React",
+      "Next.js",
+      "Nuxt.js",
+      "Tailwind CSS",
+      "Bootstrap",
+      "Node.js",
+      "NestJS",
+      "Laravel / CI2",
       "REST APIs",
+      "MySQL",
+      "Prisma ORM",
+      "Docker",
+      "AWS (EC2, S3, RDS, CloudFront)",
+      "GCP & Huawei Cloud",
       "Git",
-      "Webpack",
     ],
   },
   {

@@ -1,16 +1,16 @@
 import { Project, SkillCategory, ExperienceItem, ProfileInfo } from '../types';
 
 export const portfolioProfile: ProfileInfo = {
-  name: 'Sippakorn',
+  name: 'Sippakorn Kanhareuk',
   role: 'Full-Stack Developer & Software Engineer',
   heroHeadline: 'Building High-Performance Web Applications & Scalable Digital Systems.',
   heroSubtitle:
     'Passionate software engineer specializing in modern React ecosystems, Node.js distributed backends, clean architecture, and intuitive user experiences that deliver measurable impact.',
   bioShort:
-    'Experienced Full-Stack Developer with a track record of architecting end-to-end web platforms, REST/GraphQL APIs, and responsive frontends with a focus on speed, reliability, and maintainability.',
+    'Experienced Full-Stack Developer with a track record of architecting end-to-end web platforms, REST APIs, and responsive frontends with a focus on speed, reliability, and maintainability.',
   bioLong: [
     'I build web platforms where engineering rigor meets thoughtful human-centric design. Over the past 4+ years, I have architected and deployed production web applications handling thousands of daily active users.',
-    'My primary toolkit centers around TypeScript, React, Next.js, Node.js, Express, PostgreSQL, Redis, and modern cloud deployment pipelines. I thrive in fast-paced environments where ownership, problem-solving, and clean, readable code matter.',
+    'My primary toolkit centers around TypeScript, React, Next.js, Node.js, Express, Docker, and CI/CD Pipelines. I thrive in environments where ownership, structured problem-solving, and clean, standardized code matter.',
     'When not coding, I enjoy exploring emerging AI developer tooling, contributing to open-source software, and crafting high-utility digital products.'
   ],
   location: 'Bangkok, Thailand (Available Worldwide / Remote)',
@@ -20,9 +20,9 @@ export const portfolioProfile: ProfileInfo = {
   linkedin: 'https://www.linkedin.com/in/sippakorn-kanhareuk-52059a281/',
   stats: {
     yearsExp: '3+ Years',
-    completedProjects: '10+ Projects',
+    completedProjects: '6 Projects',
     satisfactionRate: '99.8%',
-    codeCommits: '1.2K+'
+    codeCommits: '1.8K+'
   }
 };
 
@@ -181,10 +181,10 @@ export const portfolioProjects: Project[] = [
       'Role-based community administration and raid leaderboard tracking'
     ],
     techStack: {
-      frontend: ['Vue.js', 'TypeScript', 'Mobile App'],
-      backend: ['Node.js', 'Express', 'JavaScript'],
-      database: ['PostgreSQL / MongoDB'],
-      devops: ['Docker', 'GitHub Actions']
+      frontend: ['Nuxt.js', 'Vue.js', 'TypeScript', 'Tailwind CSS'],
+      backend: ['Node.js', 'NestJS / Express', 'REST APIs'],
+      database: ['MySQL', 'PostgreSQL / Prisma ORM'],
+      devops: ['Docker', 'GitHub Actions', 'AWS']
     },
     metrics: [
       { label: 'Platforms', value: 'Web + Mobile + API' },
@@ -235,56 +235,57 @@ export const portfolioSkills: SkillCategory[] = [
     description: 'Modern, high-performance web interfaces with pixel-perfect responsive execution',
     color: 'blue',
     skills: [
-      { name: 'React 18 & 19', level: 'Expert', percent: 95 },
-      { name: 'TypeScript', level: 'Expert', percent: 92 },
-      { name: 'Next.js (App Router)', level: 'Advanced', percent: 90 },
-      { name: 'Tailwind CSS & Styling', level: 'Expert', percent: 95 },
-      { name: 'State Management (Zustand/Redux)', level: 'Advanced', percent: 90 },
-      { name: 'Vite & Webpack Tooling', level: 'Advanced', percent: 88 }
+      { name: 'React 18 & 19', level: 'Expert' },
+      { name: 'Next.js (App Router)', level: 'Advanced' },
+      { name: 'Nuxt.js & Vue.js', level: 'Advanced' },
+      { name: 'TypeScript & JavaScript (ES6+)', level: 'Expert' },
+      { name: 'Tailwind CSS & Styling', level: 'Expert' },
+      { name: 'Bootstrap & HTML5/CSS3', level: 'Expert' }
     ]
   },
   {
-    title: 'Backend & Distributed Systems',
-    description: 'Robust REST/GraphQL services, microservices, and asynchronous event streams',
+    title: 'Backend & APIs',
+    description: 'Robust REST/GraphQL services, MVC architectures, and microservices',
     color: 'emerald',
     skills: [
-      { name: 'Node.js & Runtime Internals', level: 'Expert', percent: 94 },
-      { name: 'Express & Fastify', level: 'Expert', percent: 92 },
-      { name: 'REST & GraphQL API Design', level: 'Expert', percent: 93 },
-      { name: 'Microservices & Worker Queues', level: 'Advanced', percent: 87 },
-      { name: 'WebSocket & Real-time Engines', level: 'Advanced', percent: 89 },
-      { name: 'Authentication & JWT / OAuth', level: 'Advanced', percent: 90 }
+      { name: 'Node.js & Runtime Internals', level: 'Expert' },
+      { name: 'NestJS & Express', level: 'Advanced' },
+      { name: 'Laravel & CodeIgniter (CI2)', level: 'Advanced' },
+      { name: 'REST & GraphQL API Design', level: 'Expert' },
+      { name: 'Authentication & JWT / OAuth', level: 'Advanced' },
+      { name: 'WebSocket & Real-time Engines', level: 'Advanced' }
     ]
   },
   {
-    title: 'Databases & Storage',
-    description: 'Relational data modeling, ACID transactions, and in-memory caching solutions',
+    title: 'Databases & ORM',
+    description: 'Relational data modeling, ACID transactions, and ORM abstractions',
     color: 'yellow',
     skills: [
-      { name: 'PostgreSQL & SQL Optimization', level: 'Expert', percent: 92 },
-      { name: 'Prisma ORM & Drizzle', level: 'Expert', percent: 91 },
-      { name: 'Redis (Caching & Queues)', level: 'Advanced', percent: 88 },
-      { name: 'MongoDB & NoSQL Modeling', level: 'Advanced', percent: 85 },
-      { name: 'Database Migrations & Indexing', level: 'Advanced', percent: 89 },
-      { name: 'Supabase & Firebase BaaS', level: 'Advanced', percent: 88 }
+      { name: 'MySQL', level: 'Expert' },
+      { name: 'PostgreSQL & SQL Optimization', level: 'Expert' },
+      { name: 'Prisma ORM & Drizzle', level: 'Expert' },
+      { name: 'Redis (Caching & Queues)', level: 'Advanced' },
+      { name: 'MongoDB & NoSQL Modeling', level: 'Advanced' },
+      { name: 'Database Migrations & Indexing', level: 'Advanced' }
     ]
   },
   {
-    title: 'DevOps, Cloud & Architecture',
-    description: 'Automated CI/CD pipelines, containerization, and production reliability',
+    title: 'Cloud, DevOps & Tooling',
+    description: 'Cloud infrastructures, containerization, CI/CD pipelines, and version control',
     color: 'purple',
     skills: [
-      { name: 'Docker & Containerization', level: 'Advanced', percent: 90 },
-      { name: 'Git & GitHub Actions CI/CD', level: 'Expert', percent: 92 },
-      { name: 'AWS Services (S3, ECS, EC2)', level: 'Proficient', percent: 82 },
-      { name: 'Linux Server Administration', level: 'Advanced', percent: 86 },
-      { name: 'Clean Architecture & Testing (Jest/Vitest)', level: 'Advanced', percent: 89 },
-      { name: 'Vercel, Railway & Cloudflare', level: 'Expert', percent: 92 }
+      { name: 'Docker & Containerization', level: 'Advanced' },
+      { name: 'AWS Services (EC2, S3, RDS, CloudFront)', level: 'Proficient' },
+      { name: 'Google Cloud & Huawei Cloud', level: 'Proficient' },
+      { name: 'Git & GitHub Actions CI/CD', level: 'Expert' },
+      { name: 'Linux Server Administration', level: 'Advanced' },
+      { name: 'Vercel, Railway & Cloudflare', level: 'Expert' }
     ]
   }
 ];
 
 export const portfolioExperiences: ExperienceItem[] = [
+  /*
   {
     id: 'exp-1',
     role: 'Senior Full-Stack Developer',
@@ -318,34 +319,62 @@ export const portfolioExperiences: ExperienceItem[] = [
     ],
     skills: ['Node.js', 'Express', 'React', 'Tailwind CSS', 'Redis', 'PostgreSQL', 'Jest']
   },
+  */
   {
     id: 'exp-3',
-    role: 'Frontend & UI Developer',
-    company: 'InnoTech Creative Labs',
-    location: 'Bangkok, Thailand',
-    period: '2020 - 2021',
+    role: 'Full-Stack Developer / Software Engineer',
+    company: 'Advice IT Infinite Public Company Limited',
+    location: 'Bangkok / Nonthaburi, Thailand',
+    period: '2024 - Present',
     type: 'Full-Time',
+    current: true,
     description:
-      'Crafted interactive web experiences, e-commerce storefronts, and dynamic design systems for diverse international brands.',
+      'Developing and maintaining enterprise web applications, e-commerce systems, internal tools, and high-volume REST APIs across frontend and backend stacks.',
     achievements: [
-      'Built 15+ pixel-perfect responsive web interfaces with Lighthouse performance scores consistently exceeding 95/100.',
-      'Collaborated closely with UI/UX designers to translate Figma design systems into reusable modular React components.'
+      'Built and enhanced web applications using modern full-stack technologies (React, Next.js, Nuxt.js, Laravel, CodeIgniter, and NestJS).',
+      'Designed and optimized database schemas and relational models using MySQL, PostgreSQL, and Prisma ORM for reliable transaction handling.',
+      'Containerized applications with Docker and deployed scalable services leveraging AWS, Google Cloud, and Huawei Cloud infrastructure.'
     ],
-    skills: ['React', 'JavaScript (ES6+)', 'HTML5/CSS3', 'REST APIs', 'Git', 'Webpack']
+    skills: [
+      'TypeScript',
+      'JavaScript (ES6+)',
+      'HTML5/CSS3',
+      'React',
+      'Next.js',
+      'Nuxt.js',
+      'Tailwind CSS',
+      'Bootstrap',
+      'Node.js',
+      'NestJS',
+      'Laravel / CI2',
+      'REST APIs',
+      'MySQL',
+      'Prisma ORM',
+      'Docker',
+      'AWS (EC2, S3, RDS, CloudFront)',
+      'GCP & Huawei Cloud',
+      'Git'
+    ]
   },
   {
     id: 'exp-4',
-    role: 'Bachelor of Science in Computer Science / Engineering',
-    company: 'University of Technology',
+    role: 'Bachelor of Engineering in Computer and Information Engineering',
+    company: 'Kasetsart University Sriracha Campus',
     location: 'Thailand',
-    period: '2016 - 2020',
+    period: '2021 - 2025',
     type: 'Education',
     description:
-      'Graduated with honors. Rigorous coursework in Data Structures, Algorithms, Distributed Computing, Database Systems, and Software Engineering Principles.',
+      'Rigorous coursework in Data Structures, Algorithms, Distributed Computing, Database Systems, and Software Engineering Principles.',
     achievements: [
-      'First Place - University Hackathon for Real-Time Collaborative Workspace solution.',
-      'Published senior capstone project on high-concurrency event brokers.'
+      'Money Mind Project: Mobile application for personal wealth and financial management, built to support saving habits, daily lifestyle tracking, and high-quality retirement planning.'
     ],
-    skills: ['Algorithms', 'Data Structures', 'System Design', 'Databases', 'Networking']
+    skills: [
+      'Algorithms',
+      'Data Structures',
+      'System Design',
+      'Databases',
+      'Networking',
+      'DevOps'
+    ]
   }
 ];

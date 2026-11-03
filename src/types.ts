@@ -31,7 +31,6 @@ export interface Project {
 export interface SkillItem {
   name: string;
   level: string; // e.g. 'Advanced', 'Proficient', 'Experienced'
-  percent: number;
   iconName?: string;
 }
 
